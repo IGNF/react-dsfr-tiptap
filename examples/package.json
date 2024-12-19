@@ -4,13 +4,19 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "predev": "react-dsfr update-icons",
         "dev": "vite",
+        "prebuild": "react-dsfr update-icons",
         "build": "tsc -b && vite build",
         "preview": "vite preview"
     },
     "dependencies": {
+        "@codegouvfr/react-dsfr": "^1.16.4",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "react-dsfr-tiptap": "^0.0.0",
+        "tss-react": "^4.9.14",
+        "type-route": "^1.1.0"
     },
     "devDependencies": {
         "@types/react": "^18.3.17",

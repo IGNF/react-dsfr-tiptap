@@ -1,3 +1,15 @@
-export function log() {
-    console.log("tiptap");
-}
+export { default as ColorInput } from "./components/ColorInput";
+export { default as Content } from "./components/Content";
+export * from "./components/Controls";
+export * from "./components/createControls";
+export { default as Group } from "./components/Group";
+export { default as Loader } from "./components/Loader";
+export { default as Menu } from "./components/Menu";
+export { default as Provider } from "./components/Provider";
+export { default as RichTextEditor } from "./components/RichTextEditor";
+export * from "./contexts/dialog";
+export * from "./contexts/editor";
+export { default as Dialog } from "./dialogs/Dialog";
+export * from "./types/controls";
+export * from "./utils/controls";
+export * from "./utils/tiptap";

@@ -1,29 +1,61 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { fr } from "@codegouvfr/react-dsfr";
+import { Footer } from "@codegouvfr/react-dsfr/Footer";
+import { Header } from "@codegouvfr/react-dsfr/Header";
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
+
+import { RouteProvider, routes } from "./router";
+import RouterRenderer from "./RouterRenderer";
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
         <>
-            <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+            <Header
+                brandTop={
+                    <>
+                        INTITULE
+                        <br />
+                        OFFICIEL
+                    </>
+                }
+                serviceTitle="Nom du site / service"
+                homeLinkProps={{
+                    ...routes.home().link,
+                    title: "Accueil",
+                }}
+                navigation={[
+                    {
+                        text: "Accueil",
+                        linkProps: routes.home().link,
+                    },
+                    // {
+                    //     text: "Test Tiptap Custom",
+                    //     linkProps: routes.custom().link,
+                    // },
+                    // {
+                    //     text: "Test Tiptap Markdown",
+                    //     linkProps: routes.markdown().link,
+                    // },
+                ]}
+                quickAccessItems={[headerFooterDisplayItem]}
+            />
+            <main>
+                <RouteProvider>
+                    <div className={fr.cx("fr-container")}>
+                        <RouterRenderer />
+                    </div>
+                </RouteProvider>
+            </main>
+            <Footer
+                accessibility="fully compliant"
+                contentDescription={`
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur. 
+                    `}
+                bottomItems={[headerFooterDisplayItem]}
+            />
         </>
     );
 }
