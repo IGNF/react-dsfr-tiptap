@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { LazyExoticComponent, ReactNode } from "react";
 import { EditorEvents } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Markdown } from "tiptap-markdown";
@@ -21,13 +21,13 @@ const defaultControls: MarkdownControl[][] = [
     ["Bold", "Italic", "Code", "ClearFormatting"],
     ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
     ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
-    // ["Link", "Unlink"],
     ["Undo", "Redo"],
-    // ["Image"],
+    ["Link", "Unlink"],
+    ["Image"],
 ];
 
 type MarkdownControls = {
-    [key in MarkdownControl]: () => ReactNode;
+    [key in MarkdownControl]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
 };
 
 interface IMarkdownEditor extends MarkdownControls {

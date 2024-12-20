@@ -19,7 +19,7 @@ interface ICreateCustomControlProps {
 
 export function createCustomControl(configuration: ICreateCustomControlProps) {
     const { Control, DialogContent, isActive, isDisabled } = configuration;
-    return function RichTextEditorBold(): ReactNode {
+    return function CustomControl(): ReactNode {
         const editor = useEditor();
         const ref = useRef<IDialogHandle>(null);
         const editorState = useEditorState({

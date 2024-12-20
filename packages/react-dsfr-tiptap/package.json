@@ -37,6 +37,16 @@
                 "types": "./dist/index.d.cts"
             }
         },
+        "./dialog": {
+            "import": {
+                "import": "./dist/dialog.js",
+                "types": "./dist/dialog.d.ts"
+            },
+            "require": {
+                "require": "./dist/dialog.cjs",
+                "types": "./dist/dialog.d.cts"
+            }
+        },
         "./markdown": {
             "import": {
                 "import": "./dist/markdown.js",
@@ -53,7 +63,7 @@
     ],
     "types": "./dist/index.d.ts",
     "scripts": {
-        "build": "tsup src/index.ts src/markdown.ts --format cjs,esm --dts --clean --sourcemap",
+        "build": "tsup src/index.ts src/dialog.ts src/markdown.ts --format cjs,esm --dts --clean",
         "prepublishOnly": "npm run build",
         "check-types": "tsc --noEmit",
         "check-exports": "attw --pack ."
@@ -65,11 +75,23 @@
     },
     "devDependencies": {
         "@arethetypeswrong/cli": "^0.17.1",
+        "@tiptap/extension-color": "^2.10.4",
+        "@tiptap/extension-highlight": "^2.10.4",
+        "@tiptap/extension-image": "^2.10.4",
+        "@tiptap/extension-link": "^2.10.4",
+        "@tiptap/extension-subscript": "^2.10.4",
+        "@tiptap/extension-superscript": "^2.10.4",
+        "@tiptap/extension-text-align": "^2.10.4",
+        "@tiptap/extension-text-style": "^2.10.4",
+        "@tiptap/extension-underline": "^2.10.4",
+        "@tiptap/extension-youtube": "^2.10.4",
+        "tiptap-markdown": "^0.8.10",
         "tsup": "^8.3.5",
         "typescript": "~5.6.2"
     },
     "peerDependencies": {
         "@codegouvfr/react-dsfr": "^1.16.4",
+        "@hookform/resolvers": "^3.9.1",
         "@tiptap/extension-color": "^2.10.4",
         "@tiptap/extension-highlight": "^2.10.4",
         "@tiptap/extension-image": "^2.10.4",
@@ -82,10 +104,16 @@
         "@tiptap/extension-youtube": "^2.10.4",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-hook-form": "^7.54.1",
         "tiptap-markdown": "^0.8.10",
-        "tss-react": "^4.9.14"
+        "tss-react": "^4.9.14",
+        "validator": "^13.12.0",
+        "yup": "^1.6.1"
     },
     "peerDependenciesMeta": {
+        "@hookform/resolvers": {
+            "optional": true
+        },
         "@tiptap/extension-color": {
             "optional": true
         },
@@ -116,7 +144,16 @@
         "@tiptap/extension-youtube": {
             "optional": true
         },
+        "react-hook-form": {
+            "optional": true
+        },
         "tiptap-markdown": {
+            "optional": true
+        },
+        "validator": {
+            "optional": true
+        },
+        "yup": {
             "optional": true
         }
     },

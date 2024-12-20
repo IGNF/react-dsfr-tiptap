@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { RichTextEditor } from "react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import StarterKit from "@tiptap/starter-kit";
+import Link from "@tiptap/extension-link";
 
 import { CustomControl1, CustomControl2 } from "./TiptapCustomButtons";
 
@@ -13,7 +15,7 @@ this is a basic example of <strong>Tiptap</strong>. Sure, there are all kind of 
 
     return (
         <>
-            <RichTextEditor.Provider content={content} extensions={[StarterKit]} onUpdate={({ editor }) => setContent(editor.getHTML())}>
+            <RichTextEditor.Provider content={content} extensions={[StarterKit, Link]} onUpdate={({ editor }) => setContent(editor.getHTML())}>
                 <RichTextEditor.Menu first>
                     <RichTextEditor.Group>
                         <RichTextEditor.Bold />
@@ -21,6 +23,14 @@ this is a basic example of <strong>Tiptap</strong>. Sure, there are all kind of 
                     <RichTextEditor.Group>
                         <CustomControl1 />
                         <CustomControl2 />
+                    </RichTextEditor.Group>
+                    <RichTextEditor.Group>
+                        <ControlLink />
+                        <ControlUnlink />
+                    </RichTextEditor.Group>
+                    <RichTextEditor.Group>
+                        <ControlImage />
+                        <ControlYoutube />
                     </RichTextEditor.Group>
                 </RichTextEditor.Menu>
                 <RichTextEditor.Content />

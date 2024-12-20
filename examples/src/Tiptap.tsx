@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { RichTextEditor } from "react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import { CustomControl1, CustomControl2 } from "./TiptapCustomButtons";
 
 const initialContent = `
@@ -41,14 +42,15 @@ const Tiptap = () => {
         <>
             <RichTextEditor
                 content={content}
+                controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage, Youtube: ControlYoutube }}
                 controls={[
                     ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "Code", "Highlight", "Color", "ClearFormatting"],
                     ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
                     ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
                     ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
-                    // ["Link", "Unlink"],
                     ["Undo", "Redo"],
-                    // ["Image", "Youtube"],
+                    ["Link", "Unlink"],
+                    ["Image", "Youtube"],
                     [CustomControl1, CustomControl2],
                 ]}
                 onContentUpdate={setContent}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ControlImage, ControlLink, ControlUnlink } from "react-dsfr-tiptap/dialog";
 import { MarkdownEditor } from "react-dsfr-tiptap/markdown";
 
 const initialContent = `
@@ -21,7 +22,7 @@ const Markdown = () => {
 
     return (
         <>
-            <MarkdownEditor content={content} onContentUpdate={setContent} />
+            <MarkdownEditor controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage }} content={content} onContentUpdate={setContent} />
             <pre>{content}</pre>
         </>
     );

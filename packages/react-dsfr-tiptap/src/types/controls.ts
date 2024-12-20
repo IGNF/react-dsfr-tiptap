@@ -15,11 +15,11 @@ export type MarkdownControl =
     | "CodeBlock"
     | "Blockquote"
     | "HorizontalRule"
-    // | "Link"
-    // | "Unlink"
+    | "Link"
+    | "Unlink"
     | "Undo"
-    | "Redo";
-// | "Image";
+    | "Redo"
+    | "Image";
 
 export type Control =
     | MarkdownControl
@@ -32,5 +32,7 @@ export type Control =
     | "AlignLeft"
     | "AlignCenter"
     | "AlignRight"
-    | "AlignJustify";
-// | "Youtube";
+    | "AlignJustify"
+    | "Youtube";
+
+export type DialogControl = "Link" | "Unlink" | "Image" | "Youtube";
