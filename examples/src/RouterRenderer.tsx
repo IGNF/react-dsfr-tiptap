@@ -1,18 +1,20 @@
 import { useRoute } from "./router";
-import TiptapEditor from "./TiptapEditor";
+import Custom from "./Custom";
+import Markdown from "./Markdown";
+import Tiptap from "./Tiptap";
 
 function RouterRenderer() {
     const route = useRoute();
 
     switch (route.name) {
         case "home":
-            return <TiptapEditor />;
+            return <Tiptap />;
 
-        // case "custom":
-        //     return <TestCustomTiptapEditor />;
+        case "custom":
+            return <Custom />;
 
-        // case "markdown":
-        //     return <TestTiptapMarkdown />;
+        case "markdown":
+            return <Markdown />;
 
         default:
             return "404";

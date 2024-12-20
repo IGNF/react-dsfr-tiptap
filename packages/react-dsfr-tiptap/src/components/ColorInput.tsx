@@ -1,5 +1,5 @@
 import { fr } from "@codegouvfr/react-dsfr";
-import { Editor } from "@tiptap/react";
+import { Editor, useEditorState } from "@tiptap/react";
 import { tss } from "tss-react";
 
 interface IColorInputProps {
@@ -9,6 +9,12 @@ interface IColorInputProps {
 function ColorInput(props: IColorInputProps) {
     const { editor } = props;
     const { classes, cx } = useStyles();
+    const editorState = useEditorState({
+        editor,
+        selector: ({ editor }: { editor: Editor }) => ({
+            color: editor.getAttributes("textStyle").color ?? "#000000",
+        }),
+    });
 
     return (
         <input
@@ -21,7 +27,7 @@ function ColorInput(props: IColorInputProps) {
                     .setColor((event.target as HTMLInputElement).value)
                     .run()
             }
-            value={editor.getAttributes("textStyle").color}
+            value={editorState.color}
         />
     );
 }

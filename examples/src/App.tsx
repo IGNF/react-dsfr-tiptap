@@ -24,17 +24,17 @@ function App() {
                 }}
                 navigation={[
                     {
-                        text: "Accueil",
+                        text: "Editor",
                         linkProps: routes.home().link,
                     },
-                    // {
-                    //     text: "Test Tiptap Custom",
-                    //     linkProps: routes.custom().link,
-                    // },
-                    // {
-                    //     text: "Test Tiptap Markdown",
-                    //     linkProps: routes.markdown().link,
-                    // },
+                    {
+                        text: "Custom",
+                        linkProps: routes.custom().link,
+                    },
+                    {
+                        text: "Markdown",
+                        linkProps: routes.markdown().link,
+                    },
                 ]}
                 quickAccessItems={[headerFooterDisplayItem]}
             />

@@ -34,7 +34,7 @@ Wow, that’s amazing. Good work, boy! 👏
 </blockquote>
 `;
 
-const TiptapEditor = () => {
+const Tiptap = () => {
     const [content, setContent] = useState(initialContent);
 
     return (
@@ -42,10 +42,13 @@ const TiptapEditor = () => {
             <RichTextEditor
                 content={content}
                 controls={[
-                    ["Bold", "Italic", "Strike", "Code", "ClearFormatting"],
+                    ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "Code", "Highlight", "Color", "ClearFormatting"],
                     ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
                     ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
+                    ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
+                    // ["Link", "Unlink"],
                     ["Undo", "Redo"],
+                    // ["Image", "Youtube"],
                     [CustomControl1, CustomControl2],
                 ]}
                 onContentUpdate={setContent}
@@ -55,4 +58,4 @@ const TiptapEditor = () => {
     );
 };
 
-export default TiptapEditor;
+export default Tiptap;
