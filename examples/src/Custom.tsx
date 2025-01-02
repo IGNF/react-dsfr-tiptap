@@ -4,7 +4,7 @@ import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 
-import { CustomControl1, CustomControl2 } from "./TiptapCustomButtons";
+import { CustomControl1, CustomControl2, CustomControl3 } from "./TiptapCustomButtons";
 
 const Custom = () => {
     const [content, setContent] = useState(`
@@ -23,6 +23,7 @@ this is a basic example of <strong>Tiptap</strong>. Sure, there are all kind of 
                     <RichTextEditor.Group>
                         <CustomControl1 />
                         <CustomControl2 />
+                        <CustomControl3 />
                     </RichTextEditor.Group>
                     <RichTextEditor.Group>
                         <ControlLink />

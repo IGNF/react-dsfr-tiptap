@@ -1,5 +1,5 @@
 import { LazyExoticComponent, ReactNode } from "react";
-import { EditorEvents } from "@tiptap/react";
+import { AnyExtension, EditorEvents } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 import { Control } from "../types/controls";
@@ -26,6 +26,8 @@ const defaultControls: Control[][] = [
     ["Image", "Youtube"],
 ];
 
+const defaultExtensions: AnyExtension[] = [StarterKit];
+
 type RichTextEditorControls = {
     [key in Control]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
 };
@@ -45,7 +47,7 @@ const RichTextEditor = ((props: IRichTextEditorProps) => {
         onContentUpdate?.(props.editor.getHTML());
     }
 
-    return <RichTextEditorLoader controls={defaultControls} extensions={[StarterKit]} onUpdate={handleUpdate} {...rest} />;
+    return <RichTextEditorLoader controls={defaultControls} extensions={defaultExtensions} onUpdate={handleUpdate} {...rest} />;
 }) as IRichTextEditor;
 
 Object.entries(richTextEditorControls).forEach(([key, component]) => {
