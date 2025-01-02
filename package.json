@@ -9,10 +9,13 @@
     ],
     "scripts": {
         "build": "npm run build -w packages/react-dsfr-tiptap",
+        "build:examples": "npm run build --w examples",
+        "test": "npm run test -w packages/react-dsfr-tiptap",
         "examples": "npm run dev -w examples",
         "prepare": "husky",
         "lint": "eslint .",
-        "lint:fix": "eslint --fix ."
+        "lint:fix": "eslint --fix .",
+        "check-types": "npm run check-types --ws"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.6.1",

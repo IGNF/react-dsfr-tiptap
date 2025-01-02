@@ -107,5 +107,5 @@ function CustomDialog() {
 export const CustomControl3 = createDialogControl({
     buttonProps: { children: "Insérer du contenu" },
     DialogContent: CustomDialog,
-    onClick: (editor, ref) => ref.current?.open(),
+    onClick: (_editor, ref) => ref.current?.open(),
 });
