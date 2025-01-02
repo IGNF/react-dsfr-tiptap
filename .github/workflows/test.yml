@@ -36,7 +36,7 @@ jobs:
               run: ${{ steps.detect-package-manager.outputs.manager }} run lint
             - name: Test
               run: ${{ steps.detect-package-manager.outputs.manager }} run test
-            - name: Test
+            - name: Build package
               run: ${{ steps.detect-package-manager.outputs.manager }} run build
-            - name: Test
+            - name: Build examples
               run: ${{ steps.detect-package-manager.outputs.manager }} run build:examples
