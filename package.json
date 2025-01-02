@@ -15,7 +15,10 @@
         "prepare": "husky",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "check-types": "npm run check-types --ws"
+        "check-types": "npm run check-types --ws",
+        "release:major": "npm run release:major -w packages/react-dsfr-tiptap",
+        "release:minor": "npm run release:minor -w packages/react-dsfr-tiptap",
+        "release:patch": "npm run release:patch -w packages/react-dsfr-tiptap"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.6.1",
