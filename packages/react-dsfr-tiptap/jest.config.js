@@ -1,7 +1,9 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} **/
 export default {
-    testEnvironment: "node",
+    setupFilesAfterEnv: ["./jest-setup.ts"],
+    testEnvironment: "jsdom",
     transform: {
-        "^.+.tsx?$": ["ts-jest", {}],
+        "^.+.[jt]sx?$": ["ts-jest", {}],
     },
+    transformIgnorePatterns: ["/node_modules/(?!(@codegouvfr)/)"],
 };

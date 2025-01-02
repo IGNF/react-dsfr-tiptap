@@ -2,7 +2,7 @@ import Button, { ButtonProps } from "@codegouvfr/react-dsfr/Button";
 
 import { useEditor } from "../contexts/editor";
 import { Editor, useEditorState } from "@tiptap/react";
-import { ElementType, MutableRefObject, ReactNode, useRef } from "react";
+import { ElementType, ReactNode, RefObject, useRef } from "react";
 import Dialog, { IDialogHandle } from "../dialogs/Dialog";
 
 interface IEditorState {
@@ -11,7 +11,7 @@ interface IEditorState {
 }
 
 interface ICreateCustomControlProps {
-    Control: (editor: Editor, editorState: IEditorState, ref: MutableRefObject<IDialogHandle | null>) => ReactNode;
+    Control: (editor: Editor, editorState: IEditorState, ref: RefObject<IDialogHandle | null>) => ReactNode;
     DialogContent?: ElementType;
     isActive?: { name: string; attributes?: Record<string, unknown> | string };
     isDisabled?: (editor: Editor) => boolean;
@@ -45,7 +45,7 @@ export function createCustomControl(configuration: ICreateCustomControlProps) {
 
 interface ICreateDialogControlProps extends Omit<ICreateCustomControlProps, "Control"> {
     buttonProps: ButtonProps;
-    onClick: (editor: Editor, ref: MutableRefObject<IDialogHandle | null>) => void;
+    onClick: (editor: Editor, ref: RefObject<IDialogHandle | null>) => void;
 }
 
 export function createDialogControl(configuration: ICreateDialogControlProps) {
