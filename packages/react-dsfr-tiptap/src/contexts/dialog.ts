@@ -15,7 +15,7 @@ interface Modal {
     id: string;
 }
 
-interface IDialogContext {
+export interface IDialogContext {
     isOpened: boolean;
     modal?: Modal;
     onClose: () => void;

@@ -77,7 +77,7 @@ function ImageDialog() {
                 },
             ]}
         >
-            <form onSubmit={onSubmit}>
+            <form data-testid="ImageDialog" onSubmit={onSubmit}>
                 <Input
                     label={"URL"}
                     state={errors.src ? "error" : "default"}

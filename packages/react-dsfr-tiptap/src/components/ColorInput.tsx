@@ -18,6 +18,7 @@ function ColorInput(props: IColorInputProps) {
 
     return (
         <input
+            data-testid="ColorInput"
             type="color"
             className={cx(fr.cx("fr-btn", "fr-btn--tertiary-no-outline", "fr-btn--sm"), classes.root)}
             onInput={(event) =>

@@ -3,7 +3,7 @@ import { Editor } from "@tiptap/react";
 
 import { getSelectedText } from "./tiptap";
 
-describe("tiptap utils", () => {
+describe("tiptap util", () => {
     describe("getSelectedText", () => {
         test("should return selected text", () => {
             expect(
