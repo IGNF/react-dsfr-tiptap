@@ -9,7 +9,7 @@
     ],
     "scripts": {
         "build": "npm run build -w packages/react-dsfr-tiptap",
-        "build:examples": "npm run build --w examples",
+        "build:examples": "npm run build:pages --w examples",
         "test": "npm run test -w packages/react-dsfr-tiptap",
         "examples": "npm run dev -w examples",
         "prepare": "husky",
