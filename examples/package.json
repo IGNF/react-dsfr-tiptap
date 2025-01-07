@@ -8,6 +8,7 @@
         "dev": "vite",
         "prebuild": "react-dsfr update-icons",
         "build": "tsc -b && vite build",
+        "prebuild:pages": "react-dsfr update-icons",
         "build:pages": "tsc -b && vite build --base=/react-dsfr-tiptap/",
         "preview": "vite preview",
         "check-types": "tsc --noEmit"
