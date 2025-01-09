@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { RichTextEditor } from "react-dsfr-tiptap";
-import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "@ignf/react-dsfr-tiptap/dialog";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 

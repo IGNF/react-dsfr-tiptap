@@ -16,6 +16,7 @@
     "dependencies": {
         "@codegouvfr/react-dsfr": "^1.16.4",
         "@hookform/resolvers": "^3.9.1",
+        "@ignf/react-dsfr-tiptap": "^0.0.0",
         "@tiptap/extension-color": "^2.10.4",
         "@tiptap/extension-highlight": "^2.10.4",
         "@tiptap/extension-subscript": "^2.10.4",
@@ -25,7 +26,6 @@
         "@tiptap/extension-underline": "^2.10.4",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-dsfr-tiptap": "^0.0.0",
         "react-hook-form": "^7.54.1",
         "tiptap-markdown": "^0.8.10",
         "tss-react": "^4.9.14",

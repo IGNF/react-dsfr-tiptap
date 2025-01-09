@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ControlImage, ControlLink, ControlUnlink } from "react-dsfr-tiptap/dialog";
-import { MarkdownEditor } from "react-dsfr-tiptap/markdown";
+import { ControlImage, ControlLink, ControlUnlink } from "@ignf/react-dsfr-tiptap/dialog";
+import { MarkdownEditor } from "@ignf/react-dsfr-tiptap/markdown";
 
 const initialContent = `
 # Tiptap Editor

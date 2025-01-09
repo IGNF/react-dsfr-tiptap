@@ -1,4 +1,4 @@
-# react-dsfr-tiptap
+# `@ignf/react-dsfr-tiptap`
 
 Composant de texte riche React pour le [System de design du gouvernement français (alias DSFR) 🇫🇷](https://www.systeme-de-design.gouv.fr/).
 
@@ -21,7 +21,7 @@ Ce dépôt contient :
 Pour installer ce package dans votre projet React lancez la commande:
 
 ```bash
-npm i react-dsfr-tiptap
+npm i @ignf/react-dsfr-tiptap
 ```
 
 (ou installez avec le package manager de votre choix)
@@ -50,7 +50,7 @@ npm i tiptap-markdown
 Une fois installée vous pouvez utilisé le composant `RichTextEditor` de cette manière:
 
 ```tsx
-import { RichTextEditor } from "react-dsfr-tiptap";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
 
 function MyComponent() {
     const [content, setContent] = useState(`<h2>Content title</h2>`);
@@ -65,10 +65,10 @@ function MyComponent() {
 
 ### Editeur Markdown
 
-Utilisez l'éditeur markdown en important le composant `MarkdownEditor` depuis `react-dsfr-tiptap/markdown`
+Utilisez l'éditeur markdown en important le composant `MarkdownEditor` depuis `@ignf/react-dsfr-tiptap/markdown`
 
 ```tsx
-import { MarkdownEditor } from "react-dsfr-tiptap/markdown";
+import { MarkdownEditor } from "@ignf/react-dsfr-tiptap/markdown";
 
 function MyComponent() {
     const [content, setContent] = useState(`## Markdown title`);
@@ -87,7 +87,7 @@ Vous pouvez également utiliser les composants de plus bas niveau pour construir
 
 ```tsx
 import StarterKit from "@tiptap/starter-kit";
-import { RichTextEditor } from "react-dsfr-tiptap";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
 
 function MyComponent() {
     const [content, setContent] = useState(`## Markdown title`);
@@ -145,8 +145,8 @@ npm i react-hook-form @hookform/resolvers yup validator
 et activez les boutons dans le menu via la props `controlMap`:
 
 ```tsx
-import { RichTextEditor } from "react-dsfr-tiptap";
-import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "@ignf/react-dsfr-tiptap/dialog";
 
 function MyComponent() {
     const [content, setContent] = useState(`<h2>Content title</h2>`);
@@ -222,7 +222,7 @@ Exemple de bouton:
 ```tsx
 import { Editor, useEditorState } from "@tiptap/react";
 import Button from "@codegouvfr/react-dsfr/Button";
-import { useEditor } from "react-dsfr-tiptap";
+import { useEditor } from "@ignf/react-dsfr-tiptap";
 
 export default function CustomControl() {
     const editor = useEditor();
@@ -249,7 +249,7 @@ export default function CustomControl() {
 Dans ce cas vous pouvez ajoutez votre bouton personnalisé via la props `controls`:
 
 ```tsx
-import { RichTextEditor } from "react-dsfr-tiptap";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
 import CustomControl from "./CustomControl";
 
 function MyComponent() {
@@ -283,7 +283,7 @@ Dans ce cas il vous faudra fournir la liste complète des contrôles.
 Vous pouvez aussi utilisez les utilitaires suivants pour faciliter la création de boutons personalisées:
 
 ```tsx
-import { createControl } from "react-dsfr-tiptap";
+import { createControl } from "@ignf/react-dsfr-tiptap";
 
 export default createControl({
     buttonProps: { children: "Insérer du contenu" },
@@ -298,7 +298,7 @@ De la même manière il suffira ensuite de l'ajouter à la props `controls` du c
 Il y a également un utilitaire pour créer un bouton qui ouvre une modale:
 
 ```tsx
-import { createDialogControl } from "react-dsfr-tiptap";
+import { createDialogControl } from "@ignf/react-dsfr-tiptap";
 
 export default createDialogControl({
     buttonProps: { children: "Insérer du contenu" },

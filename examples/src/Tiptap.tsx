@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { RichTextEditor } from "react-dsfr-tiptap";
-import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import { RichTextEditor } from "@ignf/react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "@ignf/react-dsfr-tiptap/dialog";
+
 import { CustomControl1, CustomControl2, CustomControl3 } from "./TiptapCustomButtons";
 
 const initialContent = `

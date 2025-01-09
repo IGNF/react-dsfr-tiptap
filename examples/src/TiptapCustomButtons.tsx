@@ -5,8 +5,8 @@ import { Select } from "@codegouvfr/react-dsfr/Select";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createControl, createDialogControl, useEditor } from "react-dsfr-tiptap";
-import { useDialog } from "react-dsfr-tiptap/dialog";
+import { createControl, createDialogControl, useEditor } from "@ignf/react-dsfr-tiptap";
+import { useDialog } from "@ignf/react-dsfr-tiptap/dialog";
 
 // 1. Create the component yourself: use the hook `useRichTextEditor` to access the editor object
 export function CustomControl1() {
