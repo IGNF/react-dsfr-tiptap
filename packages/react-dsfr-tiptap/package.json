@@ -1,7 +1,6 @@
 {
     "name": "react-dsfr-tiptap",
-    "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "React Tiptap component for dsfr design system",
     "license": "MIT",
     "workspaces": [
