@@ -1,7 +1,7 @@
 import { LazyExoticComponent, ReactNode } from "react";
-import { AnyExtension, EditorEvents } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { EditorEvents } from "@tiptap/react";
 
+import { richTextEditorDefaultControls, richTextEditorDefaultExtensions } from "../constants/richTextEditor";
 import { Control } from "../types/controls";
 import { richTextEditorControls } from "../utils/controls";
 
@@ -15,18 +15,6 @@ export interface IRichTextEditorProps extends Omit<ILoaderProps, "controls"> {
     controls?: (Control | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
     onContentUpdate?: (content: string) => void;
 }
-
-const defaultControls: Control[][] = [
-    ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "Code", "Highlight", "Color", "ClearFormatting"],
-    ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
-    ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
-    ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
-    ["Undo", "Redo"],
-    ["Link", "Unlink"],
-    ["Image", "Youtube"],
-];
-
-const defaultExtensions: AnyExtension[] = [StarterKit];
 
 type RichTextEditorControls = {
     [key in Control]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
@@ -47,7 +35,7 @@ const RichTextEditor = ((props: IRichTextEditorProps) => {
         onContentUpdate?.(props.editor.getHTML());
     }
 
-    return <RichTextEditorLoader controls={defaultControls} extensions={defaultExtensions} onUpdate={handleUpdate} {...rest} />;
+    return <RichTextEditorLoader controls={richTextEditorDefaultControls} extensions={richTextEditorDefaultExtensions} onUpdate={handleUpdate} {...rest} />;
 }) as IRichTextEditor;
 
 Object.entries(richTextEditorControls).forEach(([key, component]) => {

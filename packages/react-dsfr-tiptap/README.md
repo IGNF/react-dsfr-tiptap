@@ -114,17 +114,52 @@ Ils vous faudra fournir alors les extensions et configurer le menu par vous mêm
 
 ### Boutons classiques
 
-Les extensions tiptap suivantes sont d'office prise en charge avec le composant `RichTextEditor`.
+Les extensions tiptap suivantes sont prise en charge par le composant `RichTextEditor`.
 
-Il suffit de les installer pour que les boutons apparaissent dans le menu:
+Pour les utiliser, installez les extensions que vous souhaitez:
 
 - `@tiptap/extension-color`
 - `@tiptap/extension-highlight`
 - `@tiptap/extension-subscript`
 - `@tiptap/extension-superscript`
 - `@tiptap/extension-text-align`
-- `@tiptap/extension-text-style`
+- `@tiptap/extension-text-style` (nécessaire pour le bouton de changement de couleur)
 - `@tiptap/extension-underline`
+
+Puis configurez le composant `<RichTextEditor>` en lui ajoutant les extensions et la liste des boutons du menu:
+
+```tsx
+import { RichTextEditor } from "react-dsfr-tiptap";
+import StarterKit from "@tiptap/extension-starter-kit";
+
+import Color from "@tiptap/extension-color";
+import Highlight from "@tiptap/extension-highlight";
+import Subscript from "@tiptap/extension-subscript";
+import Superscript from "@tiptap/extension-superscript";
+import TextAlign from "@tiptap/extension-text-align";
+import TextStyle from "@tiptap/extension-text-style";
+import Underline from "@tiptap/extension-underline";
+
+function MyComponent() {
+    const [content, setContent] = useState(`<h2>Content title</h2>`);
+    return (
+        <RichTextEditor
+            content={content}
+            controls={[
+                ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "Code", "Highlight", "Color", "ClearFormatting"],
+                ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
+                ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
+                ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
+                ["Undo", "Redo"],
+            ]}
+            extensions={[StarterKit, Color, Highlight, Subscript, Superscript, TextAlign, TextStyle, Underline]}
+            onContentUpdate={setContent}
+        />
+    );
+}
+```
+
+N'oubliez pas d'y inclure l'extension `StarterKit` dans ce cas.
 
 Ces extensions ne fonctionnent qu'avec le composant `RichTextEditor` et pas le composant `MarkdownEditor`.
 
@@ -142,11 +177,43 @@ Pour utiliser ces extensions installez les packages supplémentaires suivants:
 npm i react-hook-form @hookform/resolvers yup validator
 ```
 
-et activez les boutons dans le menu via la props `controlMap`:
+et activez les boutons dans le menu:
+
+```tsx
+import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import StarterKit from "@tiptap/extension-starter-kit";
+
+import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
+import Youtube from "@tiptap/extension-youtube";
+
+function MyComponent() {
+    const [content, setContent] = useState(`<h2>Content title</h2>`);
+    return (
+        <>
+            <RichTextEditor
+                content={content}
+                controls={[...markdownEditorDefaultControls, [ControlLink, ControlUnlink], [ControlImage, ControlImage]]}
+                extensions={[StarterKit, Image, Link, Youtube]}
+                onContentUpdate={setContent}
+            />
+            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        </>
+    );
+}
+```
+
+ou via la props `controlMap`:
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import StarterKit from "@tiptap/extension-starter-kit";
+
+import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
+import Youtube from "@tiptap/extension-youtube";
 
 function MyComponent() {
     const [content, setContent] = useState(`<h2>Content title</h2>`);
@@ -155,6 +222,8 @@ function MyComponent() {
             <RichTextEditor
                 content={content}
                 controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage, Youtube: ControlYoutube }}
+                controls={[...markdownEditorDefaultControls, ["Link", "Unlink"], ["Image", "Youtube"]]}
+                extensions={[StarterKit, Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
             <div dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -164,6 +233,55 @@ function MyComponent() {
 ```
 
 Cela fonctionne de la même manière pour le composant `MarkdownEditor` sauf qu'il ne supporte que les liens et les images (et pas les vidéos).
+
+### Chargement dynamique
+
+Si vous utilisez plusieurs editeurs de texte riche ou markdown, nécessitant différentes extensions, vous pouvez utiliser le chargement dynamique d'extension via la props `extensionLoader`.
+
+Par exemple:
+
+```tsx
+import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
+import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import StarterKit from "@tiptap/extension-starter-kit";
+
+const extensionLoader = {
+    color: () =>
+        Promise.all([
+            import("@tiptap/extension-color").then((module) => module.default),
+            import("@tiptap/extension-text-style").then((module) => module.default),
+        ]),
+    highlight: () => import("@tiptap/extension-highlight").then((module) => module.default),
+    image: () => import("@tiptap/extension-image").then((module) => module.default),
+    link: () => import("@tiptap/extension-link").then((module) => module.default),
+    subscript: () => import("@tiptap/extension-subscript").then((module) => module.default),
+    superscript: () => import("@tiptap/extension-superscript").then((module) => module.default),
+    textAlign: () => import("@tiptap/extension-text-align").then((module) => module.default),
+    underline: () => import("@tiptap/extension-underline").then((module) => module.default),
+    youtube: () => import("@tiptap/extension-youtube").then((module) => module.default),
+};
+
+function MyComponent() {
+    const [content, setContent] = useState(`<h2>Content title</h2>`);
+    return (
+        <>
+            <RichTextEditor
+                content={content}
+                controls={["Bold", "Italic", "Underline", "Strike", "Color"]}
+                extensionLoader={extensionLoader}
+                onContentUpdate={setContent}
+            />
+            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        </>
+    );
+}
+```
+
+Dans ce cas les extensions configurées dans `extensionLoader` ne seront chargés si cela est nécessaire en fonction des boutons que vous définissez dans la props `controls`.
+
+Dans l'exemple ci-dessus, seul les extensions `@tiptap/extension-color`, `@tiptap/extension-text-style` et `@tiptap/extension-underline` (en plus de l'extension `@tiptap/extension-starter-kit` qui est chargée de base) ne seront chargées (car ces extensions sont nécéssaires pour les boutons `"Color"` et `"Underline"`).
+
+Vous pouvez aussi réutiliser la configuration via cette variable `extensionLoader` dans plusieurs instances de `<RichTextEditor>` ou `<MarkdownEditor>`.
 
 ## Configuration
 
@@ -176,6 +294,7 @@ Les 2 composants `RichTextEditor` et `MarkdownEditor` fonctionne de la même man
 | `content`         | `string`                                                                              | `""`                | Contenu de la zone de texte riche                                 |
 | `controlMap`      | `Partial<Record<Control, (() => ReactNode) \| LazyExoticComponent<() => ReactNode>>>` | `{}`                | Permet de configurer les composants des boutons préconfigurés     |
 | `controls`        | `(Control \| (() => ReactNode) \| LazyExoticComponent<() => ReactNode>)[][]`          | `defaultControls`   | Permet de configurer les boutons du menu                          |
+| `extensionLoader` | `Partial<Record<Extension, () => Promise<AnyExtension \| AnyExtension[]>>>`           | `{}`                | Permet de charger dynamiquement des extensions                    |
 | `extensions`      | `AnyExtension[]`                                                                      | `defaultExtensions` | Permet d'ajouter des extensions                                   |
 | `menu`            | `"top" \| "bottom"`                                                                   | `"top"`             | Position du menu                                                  |
 | `onContentUpdate` | `(content: string) => void`                                                           |                     | Fonction appelé quand le contenu est mis à jour par l'utilisateur |
@@ -330,3 +449,25 @@ Ici on met la liste des personnes qui travaillent sur ce projet et le maintienne
 |     |        |      |          |
 |     |        |      |          |
 |     |        |      |          |
+
+## Troubleshooting
+
+### Webpack Encore: Module not found
+
+If you encounter an error similar to this one:
+
+```
+./node_modules/react-dsfr-tiptap/dist/chunk-XB7EBDH4.js" contains a reference to the file "@codegouvfr/react-dsfr/Modal".
+This file can not be found, please check it for typos or update it if the file got moved.
+```
+
+Add this to your webpack config file (`webpack.config.js` or similar):
+
+```js
+module.exports.module.rules.push({
+    test: /node_modules\/react-dsfr-tiptap\/.*\.js$/,
+    resolve: {
+        fullySpecified: false,
+    },
+});
+```

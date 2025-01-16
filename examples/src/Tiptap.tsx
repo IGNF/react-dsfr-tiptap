@@ -4,6 +4,22 @@ import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import { CustomControl1, CustomControl2, CustomControl3 } from "./TiptapCustomButtons";
 
+const extensionLoader = {
+    color: () =>
+        Promise.all([
+            import("@tiptap/extension-color").then((module) => module.default),
+            import("@tiptap/extension-text-style").then((module) => module.default),
+        ]),
+    highlight: () => import("@tiptap/extension-highlight").then((module) => module.default),
+    image: () => import("@tiptap/extension-image").then((module) => module.default),
+    link: () => import("@tiptap/extension-link").then((module) => module.default),
+    subscript: () => import("@tiptap/extension-subscript").then((module) => module.default),
+    superscript: () => import("@tiptap/extension-superscript").then((module) => module.default),
+    textAlign: () => import("@tiptap/extension-text-align").then((module) => module.default),
+    underline: () => import("@tiptap/extension-underline").then((module) => module.default),
+    youtube: () => import("@tiptap/extension-youtube").then((module) => module.default),
+};
+
 const initialContent = `
 <h2>
 Hi there,
@@ -53,6 +69,7 @@ const Tiptap = () => {
                     ["Image", "Youtube"],
                     [CustomControl1, CustomControl2, CustomControl3],
                 ]}
+                extensionLoader={extensionLoader}
                 onContentUpdate={setContent}
             />
             <div dangerouslySetInnerHTML={{ __html: content }}></div>

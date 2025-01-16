@@ -1,4 +1,4 @@
-import Button, { ButtonProps } from "@codegouvfr/react-dsfr/Button";
+import Button, { ButtonProps } from "@codegouvfr/react-dsfr/Button.js";
 
 import { useEditor } from "../contexts/editor";
 import { Editor, useEditorState } from "@tiptap/react";
