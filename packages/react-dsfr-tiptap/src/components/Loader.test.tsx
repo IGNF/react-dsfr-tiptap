@@ -11,8 +11,8 @@ describe("Loader component", () => {
         expect(buttons[0].getAttribute("title")).toEqual("Gras");
     });
 
-    test("it should render the 'Bold' and the 'Underline' buttons", async () => {
-        render(<Loader controls={[["Bold", "Underline"]]} />);
+    test("it should render the 'Bold' and the 'Italic' buttons", async () => {
+        render(<Loader controls={[["Bold", "Italic"]]} />);
         // Wait for the second render
         await waitFor(() => expect(screen.queryAllByRole("button").length).toEqual(2));
     });
