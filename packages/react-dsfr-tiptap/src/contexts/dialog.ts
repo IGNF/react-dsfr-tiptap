@@ -1,4 +1,4 @@
-import { ModalProps } from "@codegouvfr/react-dsfr/Modal";
+import { ModalProps } from "@codegouvfr/react-dsfr/Modal/index.js";
 import { createContext, useContext } from "react";
 
 interface Modal {

@@ -26,24 +26,9 @@ export type Extension =
 export interface ILoaderProps extends Omit<IProviderProps, "children"> {
     controlMap?: Partial<Record<Control, (() => ReactNode) | LazyExoticComponent<() => ReactNode>>>;
     controls: (Control | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
+    extensionLoader?: Partial<Record<Extension, () => Promise<AnyExtension | AnyExtension[]>>>;
     menu?: "top" | "bottom";
 }
-
-const extensionLoader: Partial<Record<Extension, () => Promise<AnyExtension | AnyExtension[]>>> = {
-    color: () =>
-        Promise.all([
-            import("@tiptap/extension-color").then((module) => module.default),
-            import("@tiptap/extension-text-style").then((module) => module.default),
-        ]),
-    highlight: () => import("@tiptap/extension-highlight").then((module) => module.default),
-    image: () => import("@tiptap/extension-image").then((module) => module.default),
-    link: () => import("@tiptap/extension-link").then((module) => module.default),
-    subscript: () => import("@tiptap/extension-subscript").then((module) => module.default),
-    superscript: () => import("@tiptap/extension-superscript").then((module) => module.default),
-    textAlign: () => import("@tiptap/extension-text-align").then((module) => module.default),
-    underline: () => import("@tiptap/extension-underline").then((module) => module.default),
-    youtube: () => import("@tiptap/extension-youtube").then((module) => module.default as AnyExtension),
-};
 
 const extensionMapping: Record<Control, Extension> = {
     Bold: "starterKit",
@@ -95,7 +80,7 @@ const extensionDefaultConfiguration = {
 };
 
 function Loader(props: ILoaderProps) {
-    const { controlMap = {}, controls, menu = "top", ...rest } = props;
+    const { controlMap = {}, controls, extensionLoader = {}, menu = "top", ...rest } = props;
     const [extensions, setExtensions] = useState<Partial<Record<Extension, AnyExtension>>>(() =>
         Object.fromEntries(props.extensions?.map((extension) => [extension.name, extension]) ?? [["starterKit", StarterKit]])
     );
@@ -111,7 +96,7 @@ function Loader(props: ILoaderProps) {
         ];
         const loadedExtensions = Object.keys(extensions);
         return neededExtensions.filter((name) => !loadedExtensions.includes(name));
-    }, [controls, extensions]);
+    }, [controls, extensionLoader, extensions]);
 
     useEffect(() => {
         if (extensionsToLoad.length > 0) {
@@ -133,7 +118,7 @@ function Loader(props: ILoaderProps) {
                 }
             });
         }
-    }, [controls, extensionsToLoad]);
+    }, [controls, extensionLoader, extensionsToLoad]);
 
     if (extensionsToLoad.length > 0) {
         return null;

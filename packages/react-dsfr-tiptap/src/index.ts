@@ -5,6 +5,7 @@ export { default as Loader } from "./components/Loader";
 export { default as Menu } from "./components/Menu";
 export { default as Provider } from "./components/Provider";
 export { default as RichTextEditor } from "./components/RichTextEditor";
+export * from "./constants/richTextEditor";
 export * from "./contexts/editor";
 export * from "./controls/Controls";
 export * from "./controls/createControls";

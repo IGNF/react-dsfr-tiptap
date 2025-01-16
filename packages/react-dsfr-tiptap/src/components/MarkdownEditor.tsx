@@ -1,8 +1,7 @@
 import { LazyExoticComponent, ReactNode } from "react";
-import { AnyExtension, EditorEvents } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import { Markdown } from "tiptap-markdown";
+import { EditorEvents } from "@tiptap/react";
 
+import { markdownEditorDefaultControls, markdownEditorDefaultExtensions } from "../constants/markdownEditor";
 import { MarkdownControl } from "../types/controls";
 import { markdownControls } from "../utils/controls";
 
@@ -16,26 +15,6 @@ export interface IMarkdownEditorProps extends Omit<ILoaderProps, "controls"> {
     controls?: (MarkdownControl | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
     onContentUpdate?: (content: string) => void;
 }
-
-const defaultControls: MarkdownControl[][] = [
-    ["Bold", "Italic", "Code", "ClearFormatting"],
-    ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
-    ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
-    ["Undo", "Redo"],
-    ["Link", "Unlink"],
-    ["Image"],
-];
-
-const defaultExtensions: AnyExtension[] = [
-    StarterKit,
-    Markdown.configure({
-        html: false,
-        linkify: true,
-        breaks: true,
-        transformPastedText: true,
-        transformCopiedText: true,
-    }),
-];
 
 type MarkdownControls = {
     [key in MarkdownControl]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
@@ -56,7 +35,7 @@ const MarkdownEditor = ((props: IMarkdownEditorProps) => {
         onContentUpdate?.(props.editor.storage.markdown.getMarkdown());
     }
 
-    return <RichTextEditorLoader controls={defaultControls} extensions={defaultExtensions} onUpdate={handleUpdate} {...rest} />;
+    return <RichTextEditorLoader controls={markdownEditorDefaultControls} extensions={markdownEditorDefaultExtensions} onUpdate={handleUpdate} {...rest} />;
 }) as IMarkdownEditor;
 
 Object.entries(markdownControls).forEach(([key, component]) => {

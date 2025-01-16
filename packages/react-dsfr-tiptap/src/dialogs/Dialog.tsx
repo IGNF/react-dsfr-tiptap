@@ -1,6 +1,6 @@
 import { forwardRef, ReactNode, useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
-import { createModal } from "@codegouvfr/react-dsfr/Modal";
-import { useIsModalOpen } from "@codegouvfr/react-dsfr/Modal/useIsModalOpen";
+import { createModal } from "@codegouvfr/react-dsfr/Modal/index.js";
+import { useIsModalOpen } from "@codegouvfr/react-dsfr/Modal/useIsModalOpen.js";
 
 import { dialogContext } from "../contexts/dialog";
 

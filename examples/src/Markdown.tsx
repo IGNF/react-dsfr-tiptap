@@ -2,6 +2,11 @@ import { useState } from "react";
 import { ControlImage, ControlLink, ControlUnlink } from "react-dsfr-tiptap/dialog";
 import { MarkdownEditor } from "react-dsfr-tiptap/markdown";
 
+const extensionLoader = {
+    image: () => import("@tiptap/extension-image").then((module) => module.default),
+    link: () => import("@tiptap/extension-link").then((module) => module.default),
+};
+
 const initialContent = `
 # Tiptap Editor
 The Tiptap Editor is a headless, framework-agnostic rich text editor that's customizable and extendable through extensions. Its headless nature means it comes without a set user interface, offering full design freedom (for a jumpstart, see linked [UI templates](#examples-codesandbox-and-ui-templates) below). Tiptap is based on the highly reliable [ProseMirror](https://github.com/ProseMirror/prosemirror) library.
@@ -22,7 +27,12 @@ const Markdown = () => {
 
     return (
         <>
-            <MarkdownEditor controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage }} content={content} onContentUpdate={setContent} />
+            <MarkdownEditor
+                controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage }}
+                content={content}
+                extensionLoader={extensionLoader}
+                onContentUpdate={setContent}
+            />
             <pre>{content}</pre>
         </>
     );
