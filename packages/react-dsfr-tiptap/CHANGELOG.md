@@ -1,3 +1,14 @@
+#### 1.0.1 (2025-01-16)
+
+##### Chores
+
+- fix release scripts ([6b239abf](https://github.com/IGNF/react-dsfr-tiptap/commit/6b239abf8782ee9d025c7f55a28c5654189f123f))
+
+##### Bug Fixes
+
+- tests ([ea060583](https://github.com/IGNF/react-dsfr-tiptap/commit/ea06058366d407bfb4b1d009a919f4a5905b67f1))
+- webpack compatibility ([09de26f7](https://github.com/IGNF/react-dsfr-tiptap/commit/09de26f7d8f134880343d1f40cb637e2a6a7fe7b))
+
 ## 1.0.0 (2025-01-13)
 
 ##### Chores
