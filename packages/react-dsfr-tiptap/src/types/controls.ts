@@ -1,6 +1,7 @@
 export type MarkdownControl =
     | "Bold"
     | "Italic"
+    | "Strike"
     | "Code"
     | "ClearFormatting"
     | "H1"
@@ -25,7 +26,6 @@ export type Control =
     | MarkdownControl
     | "Color"
     | "Underline"
-    | "Strike"
     | "Subscript"
     | "Superscript"
     | "Highlight"
