@@ -1,3 +1,43 @@
+#### 1.0.2 (2025-01-20)
+
+##### Chores
+
+- update github actions ([f15c1a4c](https://github.com/IGNF/react-dsfr-tiptap/commit/f15c1a4c94de16c3b1e0368dcddb6cb54a4a6d62))
+- fix release scripts ([2da32a61](https://github.com/IGNF/react-dsfr-tiptap/commit/2da32a61c8d9499d8dc3cb653497afe210e1afe0))
+- deploy examples on github pages ([33c13a0c](https://github.com/IGNF/react-dsfr-tiptap/commit/33c13a0c3607e460ca95d5b441e75f48fc9af4c9))
+- setup jsdom and testing library jest dom ([d3ba7f11](https://github.com/IGNF/react-dsfr-tiptap/commit/d3ba7f112a50d1d7f4a750de598a4058a7b0c213))
+- add changelog generation ([fec44f32](https://github.com/IGNF/react-dsfr-tiptap/commit/fec44f3227874cc049f75fbbb2dc82e16e571281))
+- wording ([dc8b1a1a](https://github.com/IGNF/react-dsfr-tiptap/commit/dc8b1a1aa4077a8fc5eb140dbd8192b222259479))
+- configure unit tests and add CI ([a4f9b8e2](https://github.com/IGNF/react-dsfr-tiptap/commit/a4f9b8e25b0e6f82cffcda8980c23c27f2713234))
+
+##### Documentation Changes
+
+- update CHANGELOG.md ([7c9231c9](https://github.com/IGNF/react-dsfr-tiptap/commit/7c9231c9627b2d5701dce20f096128194317d71e))
+- update CHANGELOG.md ([bbc0f492](https://github.com/IGNF/react-dsfr-tiptap/commit/bbc0f492050cb8129cc8f3c98578c499538134ef))
+- update README and LICENCE ([7dbc64c5](https://github.com/IGNF/react-dsfr-tiptap/commit/7dbc64c52426ab7b4e171d0167000acef5d973c6))
+- update README ([ff2b9c85](https://github.com/IGNF/react-dsfr-tiptap/commit/ff2b9c85df863595b8b51a13e693fff73e55054a))
+
+##### New Features
+
+- add Strike control for markdown editor ([3e454469](https://github.com/IGNF/react-dsfr-tiptap/commit/3e45446964629e88cfa662789c50002cc3834dbd))
+- manage link, image and youtube controls ([28450dd7](https://github.com/IGNF/react-dsfr-tiptap/commit/28450dd75550404313b6470a9113ded6fc3261f3))
+- add examples for markdown and other controls ([7569fb62](https://github.com/IGNF/react-dsfr-tiptap/commit/7569fb6258e91193e7ee35c634ce478b6fc4e3f1))
+- add tiptap components and example ([fc7cb0c8](https://github.com/IGNF/react-dsfr-tiptap/commit/fc7cb0c883071cc95d864e4d34a9024ee538f004))
+- initialize repo with quality tools ([bc27777b](https://github.com/IGNF/react-dsfr-tiptap/commit/bc27777b442d935e970f898396534b1a1f140aff))
+
+##### Bug Fixes
+
+- webpack compatibility for dialog import ([b60ff7cf](https://github.com/IGNF/react-dsfr-tiptap/commit/b60ff7cf44120f391f922e0127cf41458ee43767))
+- tests ([fb79d42c](https://github.com/IGNF/react-dsfr-tiptap/commit/fb79d42cd014e39a313b10a77a457d8da0524f94))
+- webpack compatibility ([c45e536d](https://github.com/IGNF/react-dsfr-tiptap/commit/c45e536d66e732fadc4a1e8abebe99c6ea3d1c7f))
+- icons for gihub pages build ([7573930d](https://github.com/IGNF/react-dsfr-tiptap/commit/7573930d590d6f5df013741a60665a6dbe025689))
+- github pages build base path ([d57e1e42](https://github.com/IGNF/react-dsfr-tiptap/commit/d57e1e4238b09ea2a00a7c456c67c1ca5b57301f))
+- deploy pipeline ([48b5d3e3](https://github.com/IGNF/react-dsfr-tiptap/commit/48b5d3e39a2fc8c34cfaca2f445136ebbb170b35))
+
+##### Tests
+
+- add tests ([d89db06b](https://github.com/IGNF/react-dsfr-tiptap/commit/d89db06b15bdf0d9222588f286940e70045cb228))
+
 #### 1.0.1 (2025-01-16)
 
 ##### Chores
