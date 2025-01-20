@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@codegouvfr/react-dsfr/Input.js";
 import { yupResolver } from "@hookform/resolvers/yup";
-import isURL from "validator/lib/isURL";
-import isMailto from "validator/lib/isMailtoURI";
+import isURL from "validator/lib/isURL.js";
+import isMailto from "validator/lib/isMailtoURI.js";
 import * as yup from "yup";
 
 import { useDialog } from "../contexts/dialog";
