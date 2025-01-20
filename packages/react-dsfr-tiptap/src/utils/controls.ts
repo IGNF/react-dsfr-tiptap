@@ -51,6 +51,7 @@ export const markdownControls: Record<Exclude<MarkdownControl, DialogControl>, (
     OrderedList: ControlOrderedList,
     Paragraph: ControlParagraph,
     Redo: ControlRedo,
+    Strike: ControlStrike,
     Undo: ControlUndo,
 };
 
@@ -62,7 +63,6 @@ export const richTextEditorControls: Record<Exclude<Control, DialogControl>, (()
     AlignRight: ControlAlignRight,
     Color: ControlColor,
     Highlight: ControlHighlight,
-    Strike: ControlStrike,
     Subscript: ControlSubscript,
     Superscript: ControlSuperscript,
     Underline: ControlUnderline,
