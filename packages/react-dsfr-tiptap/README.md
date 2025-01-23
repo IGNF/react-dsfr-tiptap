@@ -300,20 +300,17 @@ Les 2 composants `RichTextEditor` et `MarkdownEditor` fonctionne de la même man
 | `menu`            | `"top" \| "bottom"`                                                                   | `"top"`             | Position du menu                                                  |
 | `onContentUpdate` | `(content: string) => void`                                                           |                     | Fonction appelé quand le contenu est mis à jour par l'utilisateur |
 
-Les autres props seront passé au hoos `useEditor` de [la librairie `@tiptap/react`](https://tiptap.dev/docs/editor/getting-started/install/react).
+Les autres props seront passé au hook `useEditor` de [la librairie `@tiptap/react`](https://tiptap.dev/docs/editor/getting-started/install/react).
 
 Pour le composant `RichTextEditor`:
 
 - `defaultControls` est égal à:
     ```ts
     [
-        ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "Code", "Highlight", "Color", "ClearFormatting"],
+        ["Bold", "Italic", "Strike", "Code", "ClearFormatting"],
         ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
         ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
-        ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
         ["Undo", "Redo"],
-        ["Link", "Unlink"],
-        ["Image", "Youtube"],
     ];
     ```
 - `defaultExtensions` est égal à: `[require("@tiptap/starter-kit")]`
@@ -323,12 +320,10 @@ Pour le composant `RichTextEditor`:
 - `defaultControls` est égal à:
     ```ts
     [
-        ["Bold", "Italic", "Code", "ClearFormatting"],
+        ["Bold", "Italic", "Strike", "Code", "ClearFormatting"],
         ["H1", "H2", "H3", "H4", "H5", "H6", "Paragraph"],
         ["BulletList", "OrderedList", "CodeBlock", "Blockquote", "HorizontalRule"],
         ["Undo", "Redo"],
-        ["Link", "Unlink"],
-        ["Image"],
     ];
     ```
 - `defaultExtensions` est égal à: `[require("@tiptap/starter-kit"), require("tiptap-markdown")]`
@@ -396,7 +391,7 @@ function MyComponent() {
 }
 ```
 
-Dans ce cas il vous faudra fournir la liste complète des contrôles.
+Dans ce cas il vous faudra fournir la liste complète des contrôles que vous voulez afficher.
 
 ### Utilitaire de création de boutons personalisés
 
@@ -455,14 +450,14 @@ Ici on met la liste des personnes qui travaillent sur ce projet et le maintienne
 
 ### Webpack Encore: Module not found
 
-If you encounter an error similar to this one:
+Si vous rencontrez une erreur similaire à la suivante:
 
 ```
 ./node_modules/react-dsfr-tiptap/dist/chunk-XB7EBDH4.js" contains a reference to the file "@codegouvfr/react-dsfr/Modal".
 This file can not be found, please check it for typos or update it if the file got moved.
 ```
 
-Add this to your webpack config file (`webpack.config.js` or similar):
+Ajouter ceci à votre configuration Webpack (`webpack.config.js` ou similaire):
 
 ```js
 module.exports.module.rules.push({
