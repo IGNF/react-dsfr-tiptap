@@ -74,6 +74,9 @@ const useStyles = tss.withName(Content.name).create(() => ({
                 paddingBottom: "1.125rem",
             },
         },
+        "li > p": {
+            margin: 0,
+        },
     },
 }));
 
