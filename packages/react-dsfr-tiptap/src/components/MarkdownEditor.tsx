@@ -1,9 +1,9 @@
-import { LazyExoticComponent, ReactNode } from "react";
+import { ReactNode } from "react";
 import { EditorEvents } from "@tiptap/react";
 
 import { markdownEditorDefaultControls, markdownEditorDefaultExtensions } from "../constants/markdownEditor";
 import { MarkdownControl } from "../types/controls";
-import { markdownControls } from "../utils/controls";
+import { ControlComponent, markdownControls } from "../utils/controls";
 
 import RichTextEditorProvider from "./Provider";
 import RichTextEditorLoader, { ILoaderProps } from "./Loader";
@@ -12,12 +12,12 @@ import RichTextEditorContent from "./Content";
 import RichTextEditorGroup from "./Group";
 
 export interface IMarkdownEditorProps extends Omit<ILoaderProps, "controls"> {
-    controls?: (MarkdownControl | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
+    controls?: (MarkdownControl | ControlComponent)[][];
     onContentUpdate?: (content: string) => void;
 }
 
 type MarkdownControls = {
-    [key in MarkdownControl]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
+    [key in MarkdownControl]: ControlComponent;
 };
 
 interface IMarkdownEditor extends MarkdownControls {

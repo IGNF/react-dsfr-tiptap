@@ -1,9 +1,9 @@
-import { LazyExoticComponent, ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { AnyExtension } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 import { Control } from "../types/controls";
-import { richTextEditorControls } from "../utils/controls";
+import { ControlComponent, richTextEditorControls } from "../utils/controls";
 
 import RichTextEditorContent from "./Content";
 import RichTextEditorMenu from "./Menu";
@@ -24,8 +24,8 @@ export type Extension =
     | "youtube";
 
 export interface ILoaderProps extends Omit<IProviderProps, "children"> {
-    controlMap?: Partial<Record<Control, (() => ReactNode) | LazyExoticComponent<() => ReactNode>>>;
-    controls: (Control | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
+    controlMap?: Partial<Record<Control, ControlComponent>>;
+    controls: (Control | ControlComponent)[][];
     extensionLoader?: Partial<Record<Extension, () => Promise<AnyExtension | AnyExtension[]>>>;
     menu?: "top" | "bottom";
 }

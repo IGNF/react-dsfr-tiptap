@@ -13,12 +13,13 @@ interface IEditorState {
 interface ICreateCustomControlProps {
     Control: (editor: Editor, editorState: IEditorState, ref: RefObject<IDialogHandle | null>) => ReactNode;
     DialogContent?: ElementType;
+    container?: Element | DocumentFragment;
     isActive?: { name: string; attributes?: Record<string, unknown> | string };
     isDisabled?: (editor: Editor) => boolean;
 }
 
 export function createCustomControl(configuration: ICreateCustomControlProps) {
-    const { Control, DialogContent, isActive, isDisabled } = configuration;
+    const { Control, DialogContent, container, isActive, isDisabled } = configuration;
     return function CustomControl(): ReactNode {
         const editor = useEditor();
         const ref = useRef<IDialogHandle>(null);
@@ -34,7 +35,7 @@ export function createCustomControl(configuration: ICreateCustomControlProps) {
             <>
                 {Control(editor, editorState, ref)}
                 {DialogContent && (
-                    <Dialog ref={ref}>
+                    <Dialog ref={ref} container={container}>
                         <DialogContent />
                     </Dialog>
                 )}
