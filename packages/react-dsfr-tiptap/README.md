@@ -45,19 +45,36 @@ npm i tiptap-markdown
 
 ## Utilisation
 
+### Styles
+
+La librairie exporte un fichier CSS que vous importer dans votre application dans le cas ou vous souhaitez afficher le code HTML généré par le composant de texte riche.
+
+Importez le fichier:
+
+```ts
+import "react-dsfr-tiptap/index.css";
+```
+
+Et utilisez la classe `fr-tiptap sur le conteneur qui va afficher le code HTML:
+
+```tsx
+<div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+```
+
 ### Texte Riche
 
 Une fois installée vous pouvez utilisé le composant `RichTextEditor` de cette manière:
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
+import "react-dsfr-tiptap/index.css";
 
 function MyComponent() {
     const [content, setContent] = useState(`<h2>Content title</h2>`);
     return (
         <>
             <RichTextEditor content={content} onContentUpdate={setContent} />
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 }
@@ -182,6 +199,7 @@ et activez les boutons dans le menu:
 ```tsx
 import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import "react-dsfr-tiptap/index.css";
 import StarterKit from "@tiptap/extension-starter-kit";
 
 import Image from "@tiptap/extension-image";
@@ -198,7 +216,7 @@ function MyComponent() {
                 extensions={[StarterKit, Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 }
@@ -209,6 +227,7 @@ ou via la props `controlMap`:
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import "react-dsfr-tiptap/index.css";
 import StarterKit from "@tiptap/extension-starter-kit";
 
 import Image from "@tiptap/extension-image";
@@ -226,7 +245,7 @@ function MyComponent() {
                 extensions={[StarterKit, Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 }
@@ -243,6 +262,7 @@ Par exemple:
 ```tsx
 import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import "react-dsfr-tiptap/index.css";
 import StarterKit from "@tiptap/extension-starter-kit";
 
 const extensionLoader = {
@@ -271,7 +291,7 @@ function MyComponent() {
                 extensionLoader={extensionLoader}
                 onContentUpdate={setContent}
             />
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 }
@@ -365,6 +385,8 @@ Dans ce cas vous pouvez ajoutez votre bouton personnalisé via la props `control
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
+import "react-dsfr-tiptap/index.css";
+
 import CustomControl from "./CustomControl";
 
 function MyComponent() {
@@ -385,7 +407,7 @@ function MyComponent() {
                 ]}
                 onContentUpdate={setContent}
             />
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 }

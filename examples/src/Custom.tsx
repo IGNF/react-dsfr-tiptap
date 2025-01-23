@@ -44,7 +44,7 @@ const Custom = () => {
                 </RichTextEditor.Menu>
                 <RichTextEditor.Content />
             </RichTextEditor.Provider>
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
     );
 };

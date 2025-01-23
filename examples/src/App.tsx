@@ -2,6 +2,7 @@ import { fr } from "@codegouvfr/react-dsfr";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
+import "react-dsfr-tiptap/index.css";
 
 import { RouteProvider, routes } from "./router";
 import RouterRenderer from "./RouterRenderer";

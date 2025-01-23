@@ -1,9 +1,11 @@
+import { ForwardedRef } from "react";
 import { fr } from "@codegouvfr/react-dsfr";
 import { EditorContent, EditorContentProps } from "@tiptap/react";
 import { tss } from "tss-react";
 
 import { useEditor } from "../contexts/editor";
-import { ForwardedRef } from "react";
+
+import "./Content.css";
 
 export interface IContentProps extends Omit<EditorContentProps, "editor" | "innerRef" | "ref"> {
     ref?: ForwardedRef<HTMLDivElement | null>;
@@ -11,9 +13,9 @@ export interface IContentProps extends Omit<EditorContentProps, "editor" | "inne
 
 function Content(props: IContentProps) {
     const editor = useEditor();
-    const { classes } = useStyles();
+    const { classes, cx } = useStyles();
 
-    return <EditorContent className={classes.root} editor={editor} {...props} />;
+    return <EditorContent className={cx(classes.root, "fr-tiptap")} editor={editor} {...props} />;
 }
 
 const useStyles = tss.withName(Content.name).create(() => ({
@@ -24,9 +26,6 @@ const useStyles = tss.withName(Content.name).create(() => ({
         },
         "hr.ProseMirror-selectednode": {
             backgroundImage: "linear-gradient(0deg, #0a76f6, #0a76f6)",
-        },
-        "span > mark": {
-            color: "inherit",
         },
         table: {
             width: "100%",
@@ -73,9 +72,6 @@ const useStyles = tss.withName(Content.name).create(() => ({
             "table thead td, table thead th": {
                 paddingBottom: "1.125rem",
             },
-        },
-        "li > p": {
-            margin: 0,
         },
     },
 }));

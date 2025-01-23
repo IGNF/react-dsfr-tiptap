@@ -1,0 +1,6 @@
+.fr-tiptap span > mark {
+    color: inherit;
+}
+.fr-tiptap li > p {
+    margin: 0;
+}

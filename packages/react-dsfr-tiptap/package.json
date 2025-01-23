@@ -22,6 +22,7 @@
     "main": "./dist/index.js",
     "exports": {
         "./package.json": "./package.json",
+        "./index.css": "./dist/index.css",
         ".": {
             "import": {
                 "import": "./dist/index.js",
