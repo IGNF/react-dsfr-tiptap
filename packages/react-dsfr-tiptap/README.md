@@ -292,6 +292,7 @@ Les 2 composants `RichTextEditor` et `MarkdownEditor` fonctionne de la même man
 | Props             | Type                                                                                  | Valeur par défaut   | Description                                                       |
 | ----------------- | ------------------------------------------------------------------------------------- | ------------------- | ----------------------------------------------------------------- |
 | `content`         | `string`                                                                              | `""`                | Contenu de la zone de texte riche                                 |
+| `contentProps`    | `IContentProps`                                                                       | `{}`                | Props pour le composant du contenu                                |
 | `controlMap`      | `Partial<Record<Control, (() => ReactNode) \| LazyExoticComponent<() => ReactNode>>>` | `{}`                | Permet de configurer les composants des boutons préconfigurés     |
 | `controls`        | `(Control \| (() => ReactNode) \| LazyExoticComponent<() => ReactNode>)[][]`          | `defaultControls`   | Permet de configurer les boutons du menu                          |
 | `extensionLoader` | `Partial<Record<Extension, () => Promise<AnyExtension \| AnyExtension[]>>>`           | `{}`                | Permet de charger dynamiquement des extensions                    |
