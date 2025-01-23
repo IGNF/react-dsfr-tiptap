@@ -1,9 +1,9 @@
-import { LazyExoticComponent, ReactNode } from "react";
+import { ReactNode } from "react";
 import { EditorEvents } from "@tiptap/react";
 
 import { richTextEditorDefaultControls, richTextEditorDefaultExtensions } from "../constants/richTextEditor";
 import { Control } from "../types/controls";
-import { richTextEditorControls } from "../utils/controls";
+import { ControlComponent, richTextEditorControls } from "../utils/controls";
 
 import RichTextEditorProvider from "./Provider";
 import RichTextEditorLoader, { ILoaderProps } from "./Loader";
@@ -12,12 +12,12 @@ import RichTextEditorMenu from "./Menu";
 import RichTextEditorGroup from "./Group";
 
 export interface IRichTextEditorProps extends Omit<ILoaderProps, "controls"> {
-    controls?: (Control | (() => ReactNode) | LazyExoticComponent<() => ReactNode>)[][];
+    controls?: (Control | ControlComponent)[][];
     onContentUpdate?: (content: string) => void;
 }
 
 type RichTextEditorControls = {
-    [key in Control]: (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
+    [key in Control]: ControlComponent;
 };
 
 interface IRichTextEditor extends RichTextEditorControls {

@@ -33,7 +33,9 @@ import {
 } from "../controls/Controls";
 import { ControlColor } from "../controls/CustomControls";
 
-export const markdownControls: Record<Exclude<MarkdownControl, DialogControl>, (() => ReactNode) | LazyExoticComponent<() => ReactNode>> = {
+export type ControlComponent = (() => ReactNode) | LazyExoticComponent<() => ReactNode>;
+
+export const markdownControls: Record<Exclude<MarkdownControl, DialogControl>, ControlComponent> = {
     Blockquote: ControlBlockquote,
     Bold: ControlBold,
     BulletList: ControlBulletList,
@@ -55,7 +57,7 @@ export const markdownControls: Record<Exclude<MarkdownControl, DialogControl>, (
     Undo: ControlUndo,
 };
 
-export const richTextEditorControls: Record<Exclude<Control, DialogControl>, (() => ReactNode) | LazyExoticComponent<() => ReactNode>> = {
+export const richTextEditorControls: Record<Exclude<Control, DialogControl>, ControlComponent> = {
     ...markdownControls,
     AlignCenter: ControlAlignCenter,
     AlignJustify: ControlAlignJustify,
