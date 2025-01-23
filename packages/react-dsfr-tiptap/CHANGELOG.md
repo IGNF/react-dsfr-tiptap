@@ -1,3 +1,21 @@
+#### 1.0.3 (2025-01-23)
+
+##### Documentation Changes
+
+- update README ([22350bbe](https://github.com/IGNF/react-dsfr-tiptap/commit/22350bbecfd1d97eebb38072d1f8f8d66db29d28))
+
+##### Bug Fixes
+
+- mock css files for unit test ([40b2efd9](https://github.com/IGNF/react-dsfr-tiptap/commit/40b2efd94f6ae11253619e562692e99777e31961))
+- export CSS to fix display issues when rendering HTML ([d94acff7](https://github.com/IGNF/react-dsfr-tiptap/commit/d94acff7b18111845aa1f195ffba2b92426b9a3e))
+- **#1:** list styles ([47dd70d3](https://github.com/IGNF/react-dsfr-tiptap/commit/47dd70d329ef7943a5da972d6827bda642353120))
+- **#3:** add portal for dialogs ([ad5700e8](https://github.com/IGNF/react-dsfr-tiptap/commit/ad5700e8ab39fd5ceb0f37adbb8cd2c40c5f968e))
+
+##### Tests
+
+- **#2:** add placeholder example ([175d27ad](https://github.com/IGNF/react-dsfr-tiptap/commit/175d27ad45cd7b6ec7d5ad8d7d75abe0b758a30d))
+- fix test ([d32638b3](https://github.com/IGNF/react-dsfr-tiptap/commit/d32638b33cc19aeba6f1816ce0083990917e07a9))
+
 #### 1.0.2 (2025-01-20)
 
 ##### Chores
