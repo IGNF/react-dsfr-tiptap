@@ -6,4 +6,7 @@ export default {
         "^.+.[jt]sx?$": ["ts-jest", {}],
     },
     transformIgnorePatterns: ["/node_modules/(?!(@codegouvfr)/)"],
+    moduleNameMapper: {
+        "\\.css$": "<rootDir>/__mocks__/styleMock.ts",
+    },
 };
