@@ -1,14 +1,19 @@
 import { fr } from "@codegouvfr/react-dsfr";
-import { EditorContent } from "@tiptap/react";
+import { EditorContent, EditorContentProps } from "@tiptap/react";
 import { tss } from "tss-react";
 
 import { useEditor } from "../contexts/editor";
+import { ForwardedRef } from "react";
 
-function Content() {
+export interface IContentProps extends Omit<EditorContentProps, "editor" | "innerRef" | "ref"> {
+    ref?: ForwardedRef<HTMLDivElement | null>;
+}
+
+function Content(props: IContentProps) {
     const editor = useEditor();
     const { classes } = useStyles();
 
-    return <EditorContent className={classes.root} editor={editor} />;
+    return <EditorContent className={classes.root} editor={editor} {...props} />;
 }
 
 const useStyles = tss.withName(Content.name).create(() => ({

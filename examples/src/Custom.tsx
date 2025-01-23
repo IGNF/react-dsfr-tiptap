@@ -3,19 +3,27 @@ import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
+import Placeholder from "@tiptap/extension-placeholder";
 
 import { CustomControl1, CustomControl2, CustomControl3 } from "./TiptapCustomButtons";
+import "./custom.css";
 
 const Custom = () => {
-    const [content, setContent] = useState(`
-<p>
-this is a basic example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor?
-</p>
-`);
+    const [content, setContent] = useState("");
 
     return (
         <>
-            <RichTextEditor.Provider content={content} extensions={[StarterKit, Link]} onUpdate={({ editor }) => setContent(editor.getHTML())}>
+            <RichTextEditor.Provider
+                content={content}
+                extensions={[
+                    StarterKit,
+                    Link,
+                    Placeholder.configure({
+                        placeholder: "Write something …",
+                    }),
+                ]}
+                onUpdate={({ editor }) => setContent(editor.getHTML())}
+            >
                 <RichTextEditor.Menu first>
                     <RichTextEditor.Group>
                         <RichTextEditor.Bold />

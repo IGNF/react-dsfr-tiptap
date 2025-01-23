@@ -5,7 +5,7 @@ import StarterKit from "@tiptap/starter-kit";
 import { Control } from "../types/controls";
 import { ControlComponent, richTextEditorControls } from "../utils/controls";
 
-import RichTextEditorContent from "./Content";
+import RichTextEditorContent, { IContentProps } from "./Content";
 import RichTextEditorMenu from "./Menu";
 import RichTextEditorProvider, { IProviderProps } from "./Provider";
 import RichTextEditorGroup from "./Group";
@@ -24,6 +24,7 @@ export type Extension =
     | "youtube";
 
 export interface ILoaderProps extends Omit<IProviderProps, "children"> {
+    contentProps?: IContentProps;
     controlMap?: Partial<Record<Control, ControlComponent>>;
     controls: (Control | ControlComponent)[][];
     extensionLoader?: Partial<Record<Extension, () => Promise<AnyExtension | AnyExtension[]>>>;
@@ -80,7 +81,7 @@ const extensionDefaultConfiguration = {
 };
 
 function Loader(props: ILoaderProps) {
-    const { controlMap = {}, controls, extensionLoader = {}, menu = "top", ...rest } = props;
+    const { contentProps = {}, controlMap = {}, controls, extensionLoader = {}, menu = "top", ...rest } = props;
     const [extensions, setExtensions] = useState<Partial<Record<Extension, AnyExtension>>>(() =>
         Object.fromEntries(props.extensions?.map((extension) => [extension.name, extension]) ?? [["starterKit", StarterKit]])
     );
@@ -152,7 +153,7 @@ function Loader(props: ILoaderProps) {
                         <RichTextEditorGroup key={i}>{components}</RichTextEditorGroup>
                     ))}
             </RichTextEditorMenu>
-            {menu === "top" && <RichTextEditorContent />}
+            {menu === "top" && <RichTextEditorContent {...contentProps} />}
         </RichTextEditorProvider>
     );
 }
