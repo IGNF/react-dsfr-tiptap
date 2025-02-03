@@ -63,7 +63,7 @@ Et utilisez la classe `fr-tiptap sur le conteneur qui va afficher le code HTML:
 
 ### Texte Riche
 
-Une fois installée vous pouvez utilisé le composant `RichTextEditor` de cette manière:
+Vous pouvez utiliser le composant `RichTextEditor` de cette manière:
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
@@ -307,7 +307,9 @@ Vous pouvez aussi réutiliser la configuration via cette variable `extensionLoad
 
 ### Props
 
-Les 2 composants `RichTextEditor` et `MarkdownEditor` fonctionne de la même manière et ont les mêmes props:
+#### Props communes
+
+Les 2 composants `RichTextEditor` et `MarkdownEditor` fonctionne globalement de la même manière et les props suivantes en commun:
 
 | Props             | Type                                                                                  | Valeur par défaut   | Description                                                       |
 | ----------------- | ------------------------------------------------------------------------------------- | ------------------- | ----------------------------------------------------------------- |
@@ -347,6 +349,14 @@ Pour le composant `RichTextEditor`:
     ];
     ```
 - `defaultExtensions` est égal à: `[require("@tiptap/starter-kit"), require("tiptap-markdown")]`
+
+#### Props `RichTextEditor`
+
+Le composant `RichTextEditor` possède en plus les props suivantes:
+
+| Props                  | Type      | Valeur par défaut | Description                                                                                                       |
+| ---------------------- | --------- | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `removeEmptyParagraph` | `boolean` | `false`           | Supprime le parapgraph vide `"<p></p>"` quand l'éditeur est complètement vide (via le callback `onContentUpdate`) |
 
 ### Ajout de boutons personnalisés
 
