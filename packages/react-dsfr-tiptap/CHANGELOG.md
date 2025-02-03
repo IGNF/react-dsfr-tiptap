@@ -1,3 +1,9 @@
+### 1.1.0 (2025-02-03)
+
+##### New Features
+
+- add props to remove the empty paragraph ([48f5284d](https://github.com/IGNF/react-dsfr-tiptap/commit/48f5284d1b59e9b6424b85edd6b8dc8ed55007fb))
+
 #### 1.0.3 (2025-01-23)
 
 ##### Documentation Changes
