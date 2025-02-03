@@ -14,6 +14,7 @@ import RichTextEditorGroup from "./Group";
 export interface IRichTextEditorProps extends Omit<ILoaderProps, "controls"> {
     controls?: (Control | ControlComponent)[][];
     onContentUpdate?: (content: string) => void;
+    removeEmptyParagraph?: boolean;
 }
 
 type RichTextEditorControls = {
@@ -28,11 +29,15 @@ interface IRichTextEditor extends RichTextEditorControls {
     Provider: typeof RichTextEditorProvider;
 }
 const RichTextEditor = ((props: IRichTextEditorProps) => {
-    const { onContentUpdate, onUpdate, ...rest } = props;
+    const { onContentUpdate, onUpdate, removeEmptyParagraph = false, ...rest } = props;
 
     function handleUpdate(props: EditorEvents["update"]) {
         onUpdate?.(props);
-        onContentUpdate?.(props.editor.getHTML());
+        let content = props.editor.getHTML();
+        if (removeEmptyParagraph && content === "<p></p>") {
+            content = "";
+        }
+        onContentUpdate?.(content);
     }
 
     return <RichTextEditorLoader controls={richTextEditorDefaultControls} extensions={richTextEditorDefaultExtensions} onUpdate={handleUpdate} {...rest} />;

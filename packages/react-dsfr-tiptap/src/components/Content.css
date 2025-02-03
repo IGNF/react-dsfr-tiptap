@@ -4,3 +4,7 @@
 .fr-tiptap li > p {
     margin: 0;
 }
+.fr-tiptap p:empty:before {
+    content: " ";
+    white-space: pre;
+}

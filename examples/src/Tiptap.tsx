@@ -71,6 +71,7 @@ const Tiptap = () => {
                 ]}
                 extensionLoader={extensionLoader}
                 onContentUpdate={setContent}
+                removeEmptyParagraph
             />
             <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
         </>
