@@ -84,11 +84,11 @@ function ImageDialog() {
                     stateRelatedMessage={errors?.src?.message?.toString()}
                     nativeInputProps={{
                         ...register("src"),
-                        placeholder: "http://www.example.com, mailto:name@email.com",
+                        placeholder: "https://www.example.com/image.jpg",
                     }}
                 />
                 <Input
-                    label={"Alt"}
+                    label={"Texte alternatif"}
                     state={errors.alt ? "error" : "default"}
                     stateRelatedMessage={errors?.alt?.message?.toString()}
                     nativeInputProps={{

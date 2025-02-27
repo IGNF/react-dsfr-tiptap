@@ -85,7 +85,7 @@ function YoutubeDialog() {
                     stateRelatedMessage={errors?.src?.message?.toString()}
                     nativeInputProps={{
                         ...register("src"),
-                        placeholder: "http://www.example.com, mailto:name@email.com",
+                        placeholder: "https://youtube.com/watch?v=...",
                     }}
                 />
                 <Input
