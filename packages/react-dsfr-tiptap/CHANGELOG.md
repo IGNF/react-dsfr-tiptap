@@ -1,3 +1,17 @@
+#### 1.1.1 (2025-03-06)
+
+##### Chores
+
+- update @hookform/resolvers peer dependency ([d4c62b8c](https://github.com/IGNF/react-dsfr-tiptap/commit/d4c62b8c3c0cb34ad2a4df0d4581234af453a286))
+
+##### Documentation Changes
+
+- publish doc ([1f29a8ce](https://github.com/IGNF/react-dsfr-tiptap/commit/1f29a8ced9c0075f5f60b98baf38c2413d7ae487))
+
+##### Bug Fixes
+
+- placeholder wording ([2c675ef5](https://github.com/IGNF/react-dsfr-tiptap/commit/2c675ef5a7c88188633eefbb63ffe090fccc5aea))
+
 ### 1.1.0 (2025-02-03)
 
 ##### New Features
