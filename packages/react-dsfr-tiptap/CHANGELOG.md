@@ -1,3 +1,9 @@
+#### 1.1.3 (2025-04-02)
+
+##### Chores
+
+- update deps ([959183b5](https://github.com/IGNF/react-dsfr-tiptap/commit/959183b5e5acf6c5819cd80ce1e9d734e0c75caa))
+
 #### 1.1.2 (2025-04-02)
 
 ##### Chores
