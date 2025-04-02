@@ -127,7 +127,7 @@ function Loader(props: ILoaderProps) {
 
     return (
         <RichTextEditorProvider {...rest} extensions={Object.values(extensions)}>
-            {menu === "bottom" && <RichTextEditorContent />}
+            {menu === "bottom" && <RichTextEditorContent {...contentProps} />}
             <RichTextEditorMenu first={menu === "top"} last={menu === "bottom"}>
                 {controls
                     .map((group) =>

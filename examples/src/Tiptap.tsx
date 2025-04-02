@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
+import Button from "@codegouvfr/react-dsfr/Button";
+import { fr } from "@codegouvfr/react-dsfr";
 
 import { CustomControl1, CustomControl2, CustomControl3 } from "./TiptapCustomButtons";
 
@@ -54,8 +56,15 @@ Wow, that’s amazing. Good work, boy! 👏
 const Tiptap = () => {
     const [content, setContent] = useState(initialContent);
 
+    function reset() {
+        setContent(initialContent);
+    }
+
     return (
         <>
+            <Button className={fr.cx("fr-mt-2w")} type="button" onClick={reset}>
+                Reset content
+            </Button>
             <RichTextEditor
                 content={content}
                 controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage, Youtube: ControlYoutube }}
