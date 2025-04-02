@@ -19,8 +19,6 @@ function Provider(props: IProviderProps) {
         if (content != null && editor != null) {
             const html = editor.getHTML();
             if (html !== content) {
-                // const { from, to } = editor.state.selection;
-                // editor.chain().focus().setContent(content).setTextSelection({ from, to }).run();
                 editor.commands.setContent(content);
             }
         }
