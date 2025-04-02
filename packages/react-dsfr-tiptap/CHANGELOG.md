@@ -1,3 +1,21 @@
+#### 1.1.2 (2025-04-02)
+
+##### Chores
+
+- update dependencies ([28339dca](https://github.com/IGNF/react-dsfr-tiptap/commit/28339dca603c772bf9bdadb1b91bf10f3e2f04b9))
+
+##### Documentation Changes
+
+- keep only one changelog file ([1e0adf35](https://github.com/IGNF/react-dsfr-tiptap/commit/1e0adf35a6f4becc865e0baddee618e45b3681c8))
+
+##### Bug Fixes
+
+- update content (controlled mode) ([06c87a2d](https://github.com/IGNF/react-dsfr-tiptap/commit/06c87a2d45fcdbc5aef272bd75a9ca5f4a550d8c))
+
+##### Refactors
+
+- remove commented code ([1de668ae](https://github.com/IGNF/react-dsfr-tiptap/commit/1de668aee28a42e38619958d88c1342bef72ea2e))
+
 #### 1.1.1 (2025-03-06)
 
 ##### Chores
