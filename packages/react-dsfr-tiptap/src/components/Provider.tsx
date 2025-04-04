@@ -7,22 +7,23 @@ import { editorContext } from "../contexts/editor";
 
 export interface IProviderProps extends UseEditorOptions {
     children?: ReactNode;
+    markdown?: boolean;
 }
 
 function Provider(props: IProviderProps) {
-    const { children, ...rest } = props;
+    const { children, markdown, ...rest } = props;
     const { content } = rest;
     const editor = useEditor(rest);
     const { classes } = useStyles();
 
     useEffect(() => {
         if (content != null && editor != null) {
-            const html = editor.getHTML();
-            if (html !== content) {
+            const oldContent = markdown ? editor.storage.markdown.getMarkdown() : editor.getHTML();
+            if (oldContent !== content) {
                 editor.commands.setContent(content);
             }
         }
-    }, [content, editor]);
+    }, [content, editor, markdown]);
 
     return (
         <div className={classes.root}>

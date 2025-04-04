@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ControlImage, ControlLink, ControlUnlink } from "react-dsfr-tiptap/dialog";
 import { MarkdownEditor } from "react-dsfr-tiptap/markdown";
+import Button from "@codegouvfr/react-dsfr/Button";
+import { fr } from "@codegouvfr/react-dsfr";
 
 const extensionLoader = {
     image: () => import("@tiptap/extension-image").then((module) => module.default),
@@ -25,8 +27,15 @@ Tiptap Editor is complemented by the collaboration open-source backend [Hocuspoc
 const Markdown = () => {
     const [content, setContent] = useState(initialContent);
 
+    function reset() {
+        setContent(initialContent);
+    }
+
     return (
         <>
+            <Button className={fr.cx("fr-mt-2w")} type="button" onClick={reset}>
+                Reset content
+            </Button>
             <MarkdownEditor
                 controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage }}
                 content={content}
