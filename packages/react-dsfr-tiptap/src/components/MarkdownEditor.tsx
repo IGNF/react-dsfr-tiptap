@@ -35,7 +35,15 @@ const MarkdownEditor = ((props: IMarkdownEditorProps) => {
         onContentUpdate?.(props.editor.storage.markdown.getMarkdown());
     }
 
-    return <RichTextEditorLoader controls={markdownEditorDefaultControls} extensions={markdownEditorDefaultExtensions} onUpdate={handleUpdate} {...rest} />;
+    return (
+        <RichTextEditorLoader
+            controls={markdownEditorDefaultControls}
+            extensions={markdownEditorDefaultExtensions}
+            markdown
+            onUpdate={handleUpdate}
+            {...rest}
+        />
+    );
 }) as IMarkdownEditor;
 
 Object.entries(markdownControls).forEach(([key, component]) => {
