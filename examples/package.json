@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@codegouvfr/react-dsfr": "^1.16.4",
+        "@emotion/react": "^11.14.0",
         "@hookform/resolvers": "^4.0.0",
         "@tiptap/extension-color": "^2.10.4",
         "@tiptap/extension-highlight": "^2.10.4",
