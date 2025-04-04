@@ -1,3 +1,10 @@
+#### 1.1.4 (2025-04-04)
+
+##### Bug Fixes
+
+- add missing peer dep for tss-react ([e095c444](https://github.com/IGNF/react-dsfr-tiptap/commit/e095c444cb817383296bf75bc58eae0a60cbdf8a))
+- controlled component for markdown editor ([8b26e03d](https://github.com/IGNF/react-dsfr-tiptap/commit/8b26e03d833f23c8bc635543f5b28ad418bdaa4a))
+
 #### 1.1.3 (2025-04-02)
 
 ##### Chores
