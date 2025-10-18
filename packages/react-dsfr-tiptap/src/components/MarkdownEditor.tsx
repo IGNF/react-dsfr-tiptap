@@ -32,14 +32,14 @@ const MarkdownEditor = ((props: IMarkdownEditorProps) => {
 
     function handleUpdate(props: EditorEvents["update"]) {
         onUpdate?.(props);
-        onContentUpdate?.(props.editor.storage.markdown.getMarkdown());
+        onContentUpdate?.(props.editor.getMarkdown());
     }
 
     return (
         <RichTextEditorLoader
             controls={markdownEditorDefaultControls}
             extensions={markdownEditorDefaultExtensions}
-            markdown
+            contentType="markdown"
             onUpdate={handleUpdate}
             {...rest}
         />

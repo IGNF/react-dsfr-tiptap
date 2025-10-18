@@ -10,4 +10,10 @@ export const richTextEditorDefaultControls: Control[][] = [
     ["Undo", "Redo"],
 ];
 
-export const richTextEditorDefaultExtensions: AnyExtension[] = [StarterKit];
+export const richTextEditorDefaultExtensions: AnyExtension[] = [
+    StarterKit.configure({
+        // Disable extensions from StarterKit to avoid conflicts with our custom ones
+        link: false,
+        underline: false,
+    }),
+];

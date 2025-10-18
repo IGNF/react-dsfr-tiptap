@@ -10,7 +10,7 @@ const extensionLoader = {
     color: () =>
         Promise.all([
             import("@tiptap/extension-color").then((module) => module.default),
-            import("@tiptap/extension-text-style").then((module) => module.default),
+            import("@tiptap/extension-text-style").then(({ TextStyle }) => TextStyle),
         ]),
     highlight: () => import("@tiptap/extension-highlight").then((module) => module.default),
     image: () => import("@tiptap/extension-image").then((module) => module.default),

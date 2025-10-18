@@ -38,7 +38,7 @@ Vous devez également avoir installé les dépendances suivantes sur votre proje
 Pour utiliser l'éditeur markdown, installez les dépendances supplémentaires avec la commande:
 
 ```bash
-npm i tiptap-markdown
+npm i @tiptap/markdown
 ```
 
 (ou installez avec le package manager de votre choix)
@@ -147,7 +147,7 @@ Puis configurez le composant `<RichTextEditor>` en lui ajoutant les extensions e
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
-import StarterKit from "@tiptap/extension-starter-kit";
+import StarterKit from "@tiptap/extension-kit";
 
 import Color from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
@@ -200,7 +200,7 @@ et activez les boutons dans le menu:
 import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-starter-kit";
+import StarterKit from "@tiptap/extension-kit";
 
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
@@ -228,7 +228,7 @@ ou via la props `controlMap`:
 import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-starter-kit";
+import StarterKit from "@tiptap/extension-kit";
 
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
@@ -263,7 +263,7 @@ Par exemple:
 import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-starter-kit";
+import StarterKit from "@tiptap/extension-kit";
 
 const extensionLoader = {
     color: () =>
@@ -299,7 +299,7 @@ function MyComponent() {
 
 Dans ce cas les extensions configurées dans `extensionLoader` ne seront chargés si cela est nécessaire en fonction des boutons que vous définissez dans la props `controls`.
 
-Dans l'exemple ci-dessus, seul les extensions `@tiptap/extension-color`, `@tiptap/extension-text-style` et `@tiptap/extension-underline` (en plus de l'extension `@tiptap/extension-starter-kit` qui est chargée de base) ne seront chargées (car ces extensions sont nécéssaires pour les boutons `"Color"` et `"Underline"`).
+Dans l'exemple ci-dessus, seul les extensions `@tiptap/extension-color`, `@tiptap/extension-text-style` et `@tiptap/extension-underline` (en plus de l'extension `@tiptap/extension-kit` qui est chargée de base) ne seront chargées (car ces extensions sont nécéssaires pour les boutons `"Color"` et `"Underline"`).
 
 Vous pouvez aussi réutiliser la configuration via cette variable `extensionLoader` dans plusieurs instances de `<RichTextEditor>` ou `<MarkdownEditor>`.
 
@@ -348,7 +348,7 @@ Pour le composant `RichTextEditor`:
         ["Undo", "Redo"],
     ];
     ```
-- `defaultExtensions` est égal à: `[require("@tiptap/starter-kit"), require("tiptap-markdown")]`
+- `defaultExtensions` est égal à: `[require("@tiptap/starter-kit"), require("TypeScript icon, indicating that this package has built-in type declarations")]`
 
 #### Props `RichTextEditor`
 

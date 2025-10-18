@@ -42,7 +42,13 @@ const Markdown = () => {
                 extensionLoader={extensionLoader}
                 onContentUpdate={setContent}
             />
-            <pre>{content}</pre>
+            <pre
+                style={{
+                    whiteSpace: "pre-wrap",
+                }}
+            >
+                <code>{content}</code>
+            </pre>
         </>
     );
 };
