@@ -12,4 +12,15 @@ describe("RichTextEditor component", () => {
         expect(title).toBeInTheDocument();
         expect(title instanceof HTMLHeadingElement).toBe(true);
     });
+
+    test("updates editor when content prop changes", async () => {
+        const { rerender } = render(<RichTextEditor content="<p>First</p>" />);
+        await waitFor(() => expect(screen.queryAllByRole("button").length).toBeGreaterThan(0));
+        expect(screen.getByText("First")).toBeInTheDocument();
+
+        // Change content prop simulating a reset
+        rerender(<RichTextEditor content="<h2>Second</h2>" />);
+        // The new heading should appear, old text should be gone
+        await waitFor(() => expect(screen.getByText("Second")).toBeInTheDocument());
+    });
 });
