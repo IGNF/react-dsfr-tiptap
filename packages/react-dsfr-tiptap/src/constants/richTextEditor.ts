@@ -1,4 +1,4 @@
-import { AnyExtension } from "@tiptap/react";
+import { AnyExtension } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 
 import { Control } from "../types/controls";

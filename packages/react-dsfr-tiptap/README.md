@@ -16,6 +16,12 @@ Ce dépôt contient :
 
 ## Installation
 
+Note de compatibilité
+
+- Cette librairie cible Tiptap v3 (React 18+). Assurez-vous d'installer les extensions en version 3.x.
+- `@tiptap/starter-kit` inclut désormais des extensions comme `Link` et `Underline`. Si vous fournissez vos propres versions (par ex. via chargement dynamique), désactivez celles du StarterKit pour éviter les doublons.
+- Si vous utilisez Jest, certains packages ESM (ex: `@tiptap/markdown` → `marked`) nécessitent d'être transformés. Dans `jest.config.js`, ajoutez par exemple `transformIgnorePatterns: ["/node_modules/(?!(@codegouvfr|@tiptap/markdown|marked)/)"]`.
+
 ### Texte Riche
 
 Pour installer ce package dans votre projet React lancez la commande:
@@ -55,7 +61,7 @@ Importez le fichier:
 import "react-dsfr-tiptap/index.css";
 ```
 
-Et utilisez la classe `fr-tiptap sur le conteneur qui va afficher le code HTML:
+Et utilisez la classe `fr-tiptap` sur le conteneur qui va afficher le code HTML:
 
 ```tsx
 <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
@@ -147,7 +153,7 @@ Puis configurez le composant `<RichTextEditor>` en lui ajoutant les extensions e
 
 ```tsx
 import { RichTextEditor } from "react-dsfr-tiptap";
-import StarterKit from "@tiptap/extension-kit";
+import StarterKit from "@tiptap/starter-kit";
 
 import Color from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
@@ -169,7 +175,20 @@ function MyComponent() {
                 ["AlignLeft", "AlignCenter", "AlignRight", "AlignJustify"],
                 ["Undo", "Redo"],
             ]}
-            extensions={[StarterKit, Color, Highlight, Subscript, Superscript, TextAlign, TextStyle, Underline]}
+            extensions={[
+                StarterKit.configure({
+                    // Désactivez Link/Underline si vous ajoutez vos versions personnalisées
+                    // link: false,
+                    // underline: false,
+                }),
+                Color,
+                Highlight,
+                Subscript,
+                Superscript,
+                TextAlign,
+                TextStyle,
+                Underline,
+            ]}
             onContentUpdate={setContent}
         />
     );
@@ -200,7 +219,7 @@ et activez les boutons dans le menu:
 import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-kit";
+import StarterKit from "@tiptap/starter-kit";
 
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
@@ -213,7 +232,15 @@ function MyComponent() {
             <RichTextEditor
                 content={content}
                 controls={[...markdownEditorDefaultControls, [ControlLink, ControlUnlink], [ControlImage, ControlImage]]}
-                extensions={[StarterKit, Image, Link, Youtube]}
+                extensions={[
+                    StarterKit.configure({
+                        // Désactivez link si vous souhaitez gérer un Link personnalisé
+                        // link: false,
+                    }),
+                    Image,
+                    Link,
+                    Youtube,
+                ]}
                 onContentUpdate={setContent}
             />
             <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -228,7 +255,7 @@ ou via la props `controlMap`:
 import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-kit";
+import StarterKit from "@tiptap/starter-kit";
 
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";

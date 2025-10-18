@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
-import { AnyExtension } from "@tiptap/react";
+import { AnyExtension } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 
 import { Control } from "../types/controls";
@@ -85,19 +85,36 @@ function Loader(props: ILoaderProps) {
     const [extensions, setExtensions] = useState<Partial<Record<Extension, AnyExtension>>>(() =>
         Object.fromEntries(props.extensions?.map((extension) => [extension.name, extension]) ?? [["starterKit", StarterKit]])
     );
-    const extensionsToLoad = useMemo(() => {
-        const neededExtensions = [
+    const { extensionsToLoad, missingExtensions } = useMemo(() => {
+        const neededFromControls = controls
+            .flat()
+            .filter((feature) => typeof feature === "string")
+            .map((feature) => extensionMapping[feature]);
+
+        const neededExtensions = [...new Set(neededFromControls.filter((name) => extensionLoader[name]))];
+        const loadedExtensions = Object.keys(extensions);
+        const extensionsToLoad = neededExtensions.filter((name) => !loadedExtensions.includes(name));
+
+        // Detect controls that require an extension which is neither already loaded nor provided by the loader.
+        const missingExtensions = [
             ...new Set(
-                controls
-                    .flat()
-                    .filter((feature) => typeof feature === "string")
-                    .map((feature) => extensionMapping[feature])
-                    .filter((name) => extensionLoader[name])
+                neededFromControls.filter(
+                    (name) => name !== "starterKit" && !loadedExtensions.includes(name) && !extensionLoader[name as keyof typeof extensionLoader]
+                )
             ),
         ];
-        const loadedExtensions = Object.keys(extensions);
-        return neededExtensions.filter((name) => !loadedExtensions.includes(name));
+
+        return { extensionsToLoad, missingExtensions };
     }, [controls, extensionLoader, extensions]);
+
+    // Dev-time hint to help consumers wire required extensions
+    if (missingExtensions.length > 0) {
+        console.warn(
+            `[react-dsfr-tiptap] Missing extensions for controls: ${missingExtensions.join(", ")}\n` +
+                `Provide them via ` +
+                `extensionLoader={{ ${missingExtensions.map((n) => `${n}: () => import('@tiptap/extension-${n}').then(m => m.default)`).join(", ")} }}`
+        );
+    }
 
     useEffect(() => {
         if (extensionsToLoad.length > 0) {
