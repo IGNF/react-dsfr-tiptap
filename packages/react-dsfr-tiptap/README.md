@@ -4,7 +4,7 @@ Composant de texte riche React pour le [System de design du gouvernement frança
 
 ## Examples
 
-Vous pouvez trouver des examples d'utilisations ici: https://ignf.github.io/react-dsfr-tiptap/
+Vous pouvez trouver des exemples d'utilisation ici: https://ignf.github.io/react-dsfr-tiptap/
 
 ## Description
 
@@ -12,14 +12,14 @@ Ce dépôt contient :
 
 - la documentation (ce fichier Readme)
 - la librairie du composant de texte riche dans `packages/react-dsfr-tiptap`
-- des examples d'intégration dans `examples`
+- des exemples d'intégration dans `examples`
 
 ## Installation
 
 Note de compatibilité
 
 - Cette librairie cible Tiptap v3 (React 18+). Assurez-vous d'installer les extensions en version 3.x.
-- `@tiptap/starter-kit` inclut désormais des extensions comme `Link` et `Underline`. Si vous fournissez vos propres versions (par ex. via chargement dynamique), désactivez celles du StarterKit pour éviter les doublons.
+- `@tiptap/starter-kit` inclut `Link` et `Underline` (nouveau en v3). Si vous fournissez vos propres versions (par ex. via chargement dynamique), désactivez-les dans `StarterKit.configure({ link: false, underline: false })`. Les autres extensions comme `TextStyle`, `Highlight`, `Color`, `TextAlign`, etc. ne sont pas incluses.
 - Si vous utilisez Jest, certains packages ESM (ex: `@tiptap/markdown` → `marked`) nécessitent d'être transformés. Dans `jest.config.js`, ajoutez par exemple `transformIgnorePatterns: ["/node_modules/(?!(@codegouvfr|@tiptap/markdown|marked)/)"]`.
 
 ### Texte Riche
@@ -53,7 +53,7 @@ npm i @tiptap/markdown
 
 ### Styles
 
-La librairie exporte un fichier CSS que vous importer dans votre application dans le cas ou vous souhaitez afficher le code HTML généré par le composant de texte riche.
+La librairie exporte un fichier CSS que vous importez dans votre application, si vous souhaitez afficher le code HTML généré par le composant de texte riche.
 
 Importez le fichier:
 
@@ -131,7 +131,7 @@ function MyComponent() {
 }
 ```
 
-Ils vous faudra fournir alors les extensions et configurer le menu par vous même.
+Il vous faudra alors fournir les extensions et configurer le menu par vous-même.
 
 ## Ajout d'extensions
 
@@ -160,7 +160,7 @@ import Highlight from "@tiptap/extension-highlight";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import TextAlign from "@tiptap/extension-text-align";
-import TextStyle from "@tiptap/extension-text-style";
+import { TextStyle } from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 
 function MyComponent() {
@@ -216,7 +216,7 @@ npm i react-hook-form @hookform/resolvers yup validator
 et activez les boutons dans le menu:
 
 ```tsx
-import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
+import { richTextEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
 import StarterKit from "@tiptap/starter-kit";
@@ -231,16 +231,8 @@ function MyComponent() {
         <>
             <RichTextEditor
                 content={content}
-                controls={[...markdownEditorDefaultControls, [ControlLink, ControlUnlink], [ControlImage, ControlImage]]}
-                extensions={[
-                    StarterKit.configure({
-                        // Désactivez link si vous souhaitez gérer un Link personnalisé
-                        // link: false,
-                    }),
-                    Image,
-                    Link,
-                    Youtube,
-                ]}
+                controls={[...richTextEditorDefaultControls, [ControlLink, ControlUnlink], [ControlImage, ControlYoutube]]}
+                extensions={[StarterKit, Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
             <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -252,7 +244,7 @@ function MyComponent() {
 ou via la props `controlMap`:
 
 ```tsx
-import { RichTextEditor } from "react-dsfr-tiptap";
+import { richTextEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
 import StarterKit from "@tiptap/starter-kit";
@@ -268,7 +260,7 @@ function MyComponent() {
             <RichTextEditor
                 content={content}
                 controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage, Youtube: ControlYoutube }}
-                controls={[...markdownEditorDefaultControls, ["Link", "Unlink"], ["Image", "Youtube"]]}
+                controls={[...richTextEditorDefaultControls, ["Link", "Unlink"], ["Image", "Youtube"]]}
                 extensions={[StarterKit, Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
@@ -278,25 +270,25 @@ function MyComponent() {
 }
 ```
 
-Cela fonctionne de la même manière pour le composant `MarkdownEditor` sauf qu'il ne supporte que les liens et les images (et pas les vidéos).
+Cela fonctionne de la même manière pour le composant `MarkdownEditor` sauf qu'il ne supporte que les liens et les images (pas les vidéos).
 
 ### Chargement dynamique
 
-Si vous utilisez plusieurs editeurs de texte riche ou markdown, nécessitant différentes extensions, vous pouvez utiliser le chargement dynamique d'extension via la props `extensionLoader`.
+Si vous utilisez plusieurs éditeurs de texte riche ou markdown, nécessitant différentes extensions, vous pouvez utiliser le chargement dynamique d'extensions via la prop `extensionLoader`.
 
 Par exemple:
 
 ```tsx
-import { markdownEditorDefaultControls, RichTextEditor } from "react-dsfr-tiptap";
+import { RichTextEditor } from "react-dsfr-tiptap";
 import { ControlImage, ControlLink, ControlUnlink, ControlYoutube } from "react-dsfr-tiptap/dialog";
 import "react-dsfr-tiptap/index.css";
-import StarterKit from "@tiptap/extension-kit";
+import StarterKit from "@tiptap/starter-kit";
 
 const extensionLoader = {
     color: () =>
         Promise.all([
             import("@tiptap/extension-color").then((module) => module.default),
-            import("@tiptap/extension-text-style").then((module) => module.default),
+            import("@tiptap/extension-text-style").then(({ TextStyle }) => TextStyle),
         ]),
     highlight: () => import("@tiptap/extension-highlight").then((module) => module.default),
     image: () => import("@tiptap/extension-image").then((module) => module.default),
@@ -324,9 +316,9 @@ function MyComponent() {
 }
 ```
 
-Dans ce cas les extensions configurées dans `extensionLoader` ne seront chargés si cela est nécessaire en fonction des boutons que vous définissez dans la props `controls`.
+Dans ce cas les extensions configurées dans `extensionLoader` ne seront chargées que si cela est nécessaire en fonction des boutons que vous définissez dans la props `controls`.
 
-Dans l'exemple ci-dessus, seul les extensions `@tiptap/extension-color`, `@tiptap/extension-text-style` et `@tiptap/extension-underline` (en plus de l'extension `@tiptap/extension-kit` qui est chargée de base) ne seront chargées (car ces extensions sont nécéssaires pour les boutons `"Color"` et `"Underline"`).
+Dans l'exemple ci-dessus, seules les extensions `@tiptap/extension-color`, `@tiptap/extension-text-style` et `@tiptap/extension-underline` (en plus de l'extension `@tiptap/starter-kit` qui est chargée de base) seront chargées (car ces extensions sont nécessaires pour les boutons `"Color"` et `"Underline"`).
 
 Vous pouvez aussi réutiliser la configuration via cette variable `extensionLoader` dans plusieurs instances de `<RichTextEditor>` ou `<MarkdownEditor>`.
 
@@ -364,7 +356,7 @@ Pour le composant `RichTextEditor`:
     ```
 - `defaultExtensions` est égal à: `[require("@tiptap/starter-kit")]`
 
-Pour le composant `RichTextEditor`:
+Pour le composant `MarkdownEditor`:
 
 - `defaultControls` est égal à:
     ```ts
@@ -375,7 +367,15 @@ Pour le composant `RichTextEditor`:
         ["Undo", "Redo"],
     ];
     ```
-- `defaultExtensions` est égal à: `[require("@tiptap/starter-kit"), require("TypeScript icon, indicating that this package has built-in type declarations")]`
+- `defaultExtensions` est égal à:
+    ```ts
+    [
+        require("@tiptap/starter-kit"),
+        require("@tiptap/markdown").Markdown.configure({
+            markedOptions: { breaks: true },
+        }),
+    ];
+    ```
 
 #### Props `RichTextEditor`
 
@@ -450,11 +450,11 @@ function MyComponent() {
 }
 ```
 
-Dans ce cas il vous faudra fournir la liste complète des contrôles que vous voulez afficher.
+Dans ce cas, il vous faudra fournir la liste complète des contrôles que vous voulez afficher.
 
-### Utilitaire de création de boutons personalisés
+### Utilitaire de création de boutons personnalisés
 
-Vous pouvez aussi utilisez les utilitaires suivants pour faciliter la création de boutons personalisées:
+Vous pouvez aussi utiliser les utilitaires suivants pour faciliter la création de boutons personnalisés:
 
 ```tsx
 import { createControl } from "react-dsfr-tiptap";
@@ -495,16 +495,6 @@ Exemple d'arborescence de projet :
 - `packages/` : dossier contenant le code source de la librarie.
 - `README.md` : ce fichier.
 
-## Contacts du projets
-
-Ici on met la liste des personnes qui travaillent sur ce projet et le maintiennent à jour.
-
-| Nom | Prénom | mail | fonction |
-| --- | ------ | ---- | -------- |
-|     |        |      |          |
-|     |        |      |          |
-|     |        |      |          |
-
 ## Troubleshooting
 
 ### Webpack Encore: Module not found
@@ -526,3 +516,7 @@ module.exports.module.rules.push({
     },
 });
 ```
+
+## Contributeurs
+
+[![Avatars of contributors of react-dsfr-tiptap](https://contrib.rocks/image?repo=IGNF/react-dsfr-tiptap "Avatars of contributors of react-dsfr-tiptap")](https://github.com/IGNF/react-dsfr-tiptap/graphs/contributors)
