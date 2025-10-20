@@ -1,5 +1,5 @@
-import { Markdown } from "@tiptap/markdown";
 import { AnyExtension } from "@tiptap/core";
+import { Markdown } from "@tiptap/markdown";
 import StarterKit from "@tiptap/starter-kit";
 
 import { MarkdownControl } from "../types/controls";
@@ -11,4 +11,11 @@ export const markdownEditorDefaultControls: MarkdownControl[][] = [
     ["Undo", "Redo"],
 ];
 
-export const markdownEditorDefaultExtensions: AnyExtension[] = [StarterKit, Markdown];
+export const markdownEditorDefaultExtensions: AnyExtension[] = [
+    StarterKit,
+    Markdown.configure({
+        markedOptions: {
+            breaks: true,
+        },
+    }),
+];
