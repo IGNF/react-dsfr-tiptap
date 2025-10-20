@@ -1,3 +1,36 @@
+## 2.0.0 (2025-10-20)
+
+##### Chores
+
+- **deps:**
+    - update eslint monorepo to v9.38.0 ([78002fd3](https://github.com/IGNF/react-dsfr-tiptap/commit/78002fd3af89ef95d53566c568cebdf354aeb3be))
+    - update dependency typescript to ~5.9.0 ([626db22b](https://github.com/IGNF/react-dsfr-tiptap/commit/626db22be088e966ab4c7cd7f5a74dafe11a76ee))
+    - update dependency @hookform/resolvers to v5 ([a95e4021](https://github.com/IGNF/react-dsfr-tiptap/commit/a95e4021558133244a40ff78141946386e617877))
+    - update jest monorepo to v30 ([3a9350f9](https://github.com/IGNF/react-dsfr-tiptap/commit/3a9350f9e3cc7f4907191cf38032c9f08960d024))
+    - update commitlint monorepo to v20 ([a94b4a94](https://github.com/IGNF/react-dsfr-tiptap/commit/a94b4a94f24ac04d73b1d1ddcb936b2187f9a455))
+    - update dependency eslint-config-prettier to v10 ([91be5f66](https://github.com/IGNF/react-dsfr-tiptap/commit/91be5f661857d0aa40c8632920683585087677a8))
+    - update dependency @arethetypeswrong/cli to ^0.18.0 ([fbfa9b9b](https://github.com/IGNF/react-dsfr-tiptap/commit/fbfa9b9b875052af7c29ba328f8fccc0e7e01fd1))
+    - update actions/upload-pages-artifact action to v4 ([033c46a5](https://github.com/IGNF/react-dsfr-tiptap/commit/033c46a549d95a3f28c586088e906f08f8be9133))
+    - update actions/setup-node action to v6 ([32c189b3](https://github.com/IGNF/react-dsfr-tiptap/commit/32c189b31ea2ac23607841a7990911d7011da63f))
+    - update actions/configure-pages action to v5 ([4c59f92c](https://github.com/IGNF/react-dsfr-tiptap/commit/4c59f92c05ea2f4529e5f4265333007dc256104b))
+    - update actions/checkout action to v5 ([0ead5da1](https://github.com/IGNF/react-dsfr-tiptap/commit/0ead5da118f71ee85c4e1b865cc3409056519d2f))
+    - update all deps ([e6f0e2f9](https://github.com/IGNF/react-dsfr-tiptap/commit/e6f0e2f95e556f384d61899092c49e15292dc37e))
+- upgrade to tiptap v3 ([96f9290d](https://github.com/IGNF/react-dsfr-tiptap/commit/96f9290d01f5fb0b962f367f67c622263df9ca6d))
+
+##### Documentation Changes
+
+- update README and examples ([7ba64d44](https://github.com/IGNF/react-dsfr-tiptap/commit/7ba64d442e5c624b540860d20836dc8dcd01f1f1))
+
+##### New Features
+
+- improve types and add safe guards for extension loader ([89edd878](https://github.com/IGNF/react-dsfr-tiptap/commit/89edd878fede4448a648bbdf482bdbfded70f5af))
+
+##### Bug Fixes
+
+- markdown editor default extensions ([ca99698f](https://github.com/IGNF/react-dsfr-tiptap/commit/ca99698f6dbb90161adf39cd2e22a82b44ec4b27))
+- resolve prosemirror css warning ([2ae869e6](https://github.com/IGNF/react-dsfr-tiptap/commit/2ae869e6bc284f6b35bb18dcf90f5246d1bb68a9))
+- fixed regression ([f24aa76b](https://github.com/IGNF/react-dsfr-tiptap/commit/f24aa76bfeb869fd09058db3ec15f8d9a6303ac7))
+
 #### 1.1.4 (2025-04-04)
 
 ##### Bug Fixes
