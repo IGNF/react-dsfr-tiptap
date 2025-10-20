@@ -5,6 +5,7 @@ import { tss } from "tss-react";
 
 import { useEditor } from "../contexts/editor";
 
+import "prosemirror-view/style/prosemirror.css";
 import "./Content.css";
 
 export interface IContentProps extends Omit<EditorContentProps, "editor" | "innerRef" | "ref"> {
