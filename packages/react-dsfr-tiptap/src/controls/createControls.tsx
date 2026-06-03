@@ -25,10 +25,17 @@ export function createCustomControl(configuration: ICreateCustomControlProps) {
         const ref = useRef<IDialogHandle>(null);
         const editorState = useEditorState({
             editor,
-            selector: ({ editor }: { editor: Editor }) => ({
-                disabled: isDisabled ? isDisabled(editor) : false,
-                isActive: isActive ? editor.isActive(isActive.name, isActive.attributes) : false,
-            }),
+            selector: ({ editor }: { editor: Editor }) => {
+                // Guard against destroyed / not-yet-mounted editors so the selector
+                // does not crash in React 18 StrictMode or on rapid mount/unmount.
+                if (!editor || editor.isDestroyed) {
+                    return { disabled: true, isActive: false };
+                }
+                return {
+                    disabled: isDisabled ? isDisabled(editor) : false,
+                    isActive: isActive ? editor.isActive(isActive.name, isActive.attributes) : false,
+                };
+            },
         });
 
         return (
@@ -67,7 +74,7 @@ export function createDialogControl(configuration: ICreateDialogControlProps) {
     });
 }
 
-interface ICreateControlProps extends Omit<ICreateDialogControlProps, "Dialog" | "onClick"> {
+interface ICreateControlProps extends Omit<ICreateDialogControlProps, "DialogContent" | "onClick"> {
     operation: { name: string; attributes?: Record<string, unknown> | string };
 }
 

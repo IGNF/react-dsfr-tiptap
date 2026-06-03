@@ -11,8 +11,11 @@ export const markdownEditorDefaultControls: MarkdownControl[][] = [
     ["Undo", "Redo"],
 ];
 
+// StarterKit v3 bundles Link. Disable it here so Loader can import the dedicated
+// DSFR-configured version without triggering a duplicate extension warning.
+// Underline is also disabled for consistency (no markdown underline control exists).
 export const markdownEditorDefaultExtensions: AnyExtension[] = [
-    StarterKit,
+    StarterKit.configure({ link: false, underline: false }),
     Markdown.configure({
         markedOptions: {
             breaks: true,

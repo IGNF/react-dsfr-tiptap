@@ -14,12 +14,28 @@ Ce dépôt contient :
 - la librairie du composant de texte riche dans `packages/react-dsfr-tiptap`
 - des exemples d'intégration dans `examples`
 
+## Matrice de compatibilité
+
+|          | Node 20.19+ | Node 22.12+ | Node 24 |
+| -------- | :---------: | :---------: | :-----: |
+| React 18 |     ✅      |     ✅      |   ✅    |
+| React 19 |     ✅      |     ✅      |   ✅    |
+
+La librairie publiée (`packages/react-dsfr-tiptap`) fonctionne sur Node >=20. Le build des examples (Vite 8) requiert Node >=20.19 ou >=22.12.
+
 ## Installation
 
 Note de compatibilité
 
-- Cette librairie cible Tiptap v3 (React 18+). Assurez-vous d'installer les extensions en version 3.x.
-- `@tiptap/starter-kit` inclut `Link` et `Underline` (nouveau en v3). Si vous fournissez vos propres versions (par ex. via chargement dynamique), désactivez-les dans `StarterKit.configure({ link: false, underline: false })`. Les autres extensions comme `TextStyle`, `Highlight`, `Color`, `TextAlign`, etc. ne sont pas incluses.
+- Cette librairie cible Tiptap v3 (React 18 & 19). Assurez-vous d'installer les extensions en version 3.x.
+- **Depuis v2.0.0 (changement majeur)** : les extensions `Link` et `Underline` sont désactivées dans le `StarterKit` par défaut, afin d'éviter les doublons d'extensions. Si vous utilisez les contrôles `Link`, `Unlink` (éditeur Markdown ou RTE) ou `Underline` (RTE), vous devez fournir une entrée `extensionLoader` correspondante — sinon un avertissement console indique la correction à apporter. Exemple :
+    ```ts
+    extensionLoader={{
+      link: () => import("@tiptap/extension-link").then((m) => m.default),
+      underline: () => import("@tiptap/extension-underline").then((m) => m.default),
+    }}
+    ```
+- Les extensions `TextStyle`, `Highlight`, `Color`, `TextAlign`, etc. ne sont pas incluses dans StarterKit et nécessitent également un `extensionLoader`.
 - Si vous utilisez Jest, certains packages ESM (ex: `@tiptap/markdown` → `marked`) nécessitent d'être transformés. Dans `jest.config.js`, ajoutez par exemple `transformIgnorePatterns: ["/node_modules/(?!(@codegouvfr|@tiptap/markdown|marked)/)"]`.
 
 ### Texte Riche
@@ -177,9 +193,8 @@ function MyComponent() {
             ]}
             extensions={[
                 StarterKit.configure({
-                    // Désactivez Link/Underline si vous ajoutez vos versions personnalisées
-                    // link: false,
-                    // underline: false,
+                    link: false,
+                    underline: false,
                 }),
                 Color,
                 Highlight,
@@ -232,7 +247,7 @@ function MyComponent() {
             <RichTextEditor
                 content={content}
                 controls={[...richTextEditorDefaultControls, [ControlLink, ControlUnlink], [ControlImage, ControlYoutube]]}
-                extensions={[StarterKit, Image, Link, Youtube]}
+                extensions={[StarterKit.configure({ link: false, underline: false }), Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
             <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -261,7 +276,7 @@ function MyComponent() {
                 content={content}
                 controlMap={{ Link: ControlLink, Unlink: ControlUnlink, Image: ControlImage, Youtube: ControlYoutube }}
                 controls={[...richTextEditorDefaultControls, ["Link", "Unlink"], ["Image", "Youtube"]]}
-                extensions={[StarterKit, Image, Link, Youtube]}
+                extensions={[StarterKit.configure({ link: false, underline: false }), Image, Link, Youtube]}
                 onContentUpdate={setContent}
             />
             <div className="fr-tiptap" dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -490,7 +505,7 @@ Exemple d'arborescence de projet :
 - `.github/` : dossier contenant les modèles d'issues et github actions.
 - `.husky/` : dossier contenant des scripts git hooks.
 - `.vscode/` : dossier contenant une configuration vscode pour le projet.
-- `doc/` : dossier contenant des fichiers .md de documentation (ex: install.md).
+- `docs/` : dossier contenant des fichiers .md de documentation.
 - `examples/` : dossier contenant une application avec des examples d'utilisation.
 - `packages/` : dossier contenant le code source de la librarie.
 - `README.md` : ce fichier.

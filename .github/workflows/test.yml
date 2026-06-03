@@ -2,9 +2,14 @@ name: Tests
 on: push
 jobs:
     test:
-        name: Test
+        name: Test (Node ${{ matrix.node-version }})
         timeout-minutes: 60
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                # Vite 8 requires Node >=20.19 or >=22.12.
+                # The library itself works on any Node >=20.
+                node-version: ["20.19", "22.12", "24"]
         steps:
             - name: Checkout
               uses: actions/checkout@v5
@@ -28,7 +33,7 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v6
               with:
-                  node-version: "20"
+                  node-version: ${{ matrix.node-version }}
                   cache: ${{ steps.detect-package-manager.outputs.manager }}
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
@@ -36,7 +41,11 @@ jobs:
               run: ${{ steps.detect-package-manager.outputs.manager }} run lint
             - name: Test
               run: ${{ steps.detect-package-manager.outputs.manager }} run test
+            - name: Type-check (all workspaces)
+              run: ${{ steps.detect-package-manager.outputs.manager }} run check-types
             - name: Build package
               run: ${{ steps.detect-package-manager.outputs.manager }} run build
+            - name: Check exports (attw)
+              run: ${{ steps.detect-package-manager.outputs.manager }} run check-exports -w react-dsfr-tiptap
             - name: Build examples
               run: ${{ steps.detect-package-manager.outputs.manager }} run build:examples

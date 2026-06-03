@@ -40,7 +40,7 @@ function YoutubeDialog() {
 
     const extension = useMemo(() => editor.extensionManager.extensions.find((extension) => extension.name === "youtube"), [editor]);
     useEffect(() => {
-        if (isOpened) {
+        if (isOpened && !editor.isDestroyed) {
             const { src, width, height } = editor.getAttributes("youtube");
             if (src) {
                 setValue("src", src);
@@ -55,6 +55,7 @@ function YoutubeDialog() {
     }, [editor, extension, isOpened, setValue]);
 
     const onSubmit = handleSubmit(() => {
+        if (editor.isDestroyed) return;
         const { src, width, height } = getValues();
 
         editor.chain().focus().setYoutubeVideo({ src, width, height }).run();

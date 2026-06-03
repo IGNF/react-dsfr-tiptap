@@ -39,7 +39,7 @@ function LinkDialog() {
     });
 
     useEffect(() => {
-        if (isOpened) {
+        if (isOpened && !editor.isDestroyed) {
             const { href } = editor.getAttributes("link");
             if (href) {
                 setValue("href", href);
@@ -52,6 +52,7 @@ function LinkDialog() {
     }, [editor, isOpened, setValue]);
 
     const onSubmit = handleSubmit(() => {
+        if (editor.isDestroyed) return;
         const { href, label } = getValues();
         const external = true;
 
