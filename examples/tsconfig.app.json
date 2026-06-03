@@ -9,6 +9,12 @@
 
         /* Bundler mode */
         "moduleResolution": "bundler",
+        "paths": {
+            "react-dsfr-tiptap": ["../packages/react-dsfr-tiptap/src/index.ts"],
+            "react-dsfr-tiptap/dialog": ["../packages/react-dsfr-tiptap/src/dialog.ts"],
+            "react-dsfr-tiptap/markdown": ["../packages/react-dsfr-tiptap/src/markdown.ts"],
+            "react-dsfr-tiptap/index.css": ["../packages/react-dsfr-tiptap/src/index.css"]
+        },
         "allowImportingTsExtensions": true,
         "isolatedModules": true,
         "moduleDetection": "force",
