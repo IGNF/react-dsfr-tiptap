@@ -10,4 +10,10 @@ export default defineConfig({
     //         "~": path.resolve(__dirname, "..", "./node_modules"),
     //     },
     // },
+    build: {
+        // Vite 8 uses lightningcss by default, but DSFR icon stylesheets contain
+        // non-standard IE10 media query hacks (min-width: 0\0) that lightningcss
+        // rejects. Fall back to esbuild for CSS minification.
+        cssMinify: "esbuild",
+    },
 });

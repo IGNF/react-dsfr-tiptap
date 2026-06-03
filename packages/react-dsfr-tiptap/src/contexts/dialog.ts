@@ -1,5 +1,5 @@
 import { ModalProps } from "@codegouvfr/react-dsfr/Modal/index.js";
-import { createContext, useContext } from "react";
+import { ReactElement, createContext, useContext } from "react";
 
 interface Modal {
     buttonProps: {
@@ -8,7 +8,7 @@ interface Modal {
         "aria-controls": string;
         "data-fr-opened": boolean;
     };
-    Component: (props: ModalProps) => JSX.Element;
+    Component: (props: ModalProps) => ReactElement;
     close: () => void;
     open: () => void;
     isOpenedByDefault: boolean;

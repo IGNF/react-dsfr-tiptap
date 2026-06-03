@@ -27,7 +27,7 @@ const Custom = () => {
             <RichTextEditor.Provider
                 content={content}
                 extensions={[
-                    StarterKit,
+                    StarterKit.configure({ link: false }),
                     Link,
                     Placeholder.configure({
                         placeholder: "Write something …",

@@ -15,7 +15,7 @@ function Provider(props: IProviderProps) {
     const { classes } = useStyles();
 
     useEffect(() => {
-        if (content != null && editor != null) {
+        if (content != null && editor != null && !editor.isDestroyed) {
             const oldContent = contentType === "markdown" ? editor.getMarkdown() : editor.getHTML();
 
             if (oldContent !== content) {

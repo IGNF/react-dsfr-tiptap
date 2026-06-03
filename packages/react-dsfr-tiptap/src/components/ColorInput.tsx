@@ -11,9 +11,13 @@ function ColorInput(props: IColorInputProps) {
     const { classes, cx } = useStyles();
     const editorState = useEditorState({
         editor,
-        selector: ({ editor }: { editor: Editor }) => ({
-            color: editor.getAttributes("textStyle").color ?? "#000000",
-        }),
+        selector: ({ editor }: { editor: Editor }) => {
+            // Guard against destroyed / not-yet-mounted editors.
+            if (!editor || editor.isDestroyed) {
+                return { color: "#000000" };
+            }
+            return { color: editor.getAttributes("textStyle").color ?? "#000000" };
+        },
     });
 
     return (
@@ -21,13 +25,14 @@ function ColorInput(props: IColorInputProps) {
             data-testid="ColorInput"
             type="color"
             className={cx(fr.cx("fr-btn", "fr-btn--tertiary-no-outline", "fr-btn--sm"), classes.root)}
-            onInput={(event) =>
+            onInput={(event) => {
+                if (!editor || editor.isDestroyed) return;
                 editor
                     .chain()
                     .focus()
                     .setColor((event.target as HTMLInputElement).value)
-                    .run()
-            }
+                    .run();
+            }}
             value={editorState.color}
         />
     );

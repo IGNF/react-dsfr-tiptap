@@ -10,4 +10,8 @@ export const richTextEditorDefaultControls: Control[][] = [
     ["Undo", "Redo"],
 ];
 
-export const richTextEditorDefaultExtensions: AnyExtension[] = [StarterKit];
+// StarterKit v3 bundles Link and Underline. Disable them here so Loader can
+// import the dedicated, DSFR-configured versions without triggering a duplicate
+// extension warning. Consumers who rely on Link or Underline must provide an
+// extensionLoader entry (Loader will warn with a copy-paste fix if they don't).
+export const richTextEditorDefaultExtensions: AnyExtension[] = [StarterKit.configure({ link: false, underline: false })];

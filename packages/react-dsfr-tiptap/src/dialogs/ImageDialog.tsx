@@ -39,7 +39,7 @@ function ImageDialog() {
     });
 
     useEffect(() => {
-        if (isOpened) {
+        if (isOpened && !editor.isDestroyed) {
             const { src, alt, title } = editor.getAttributes("image");
             if (src) {
                 setValue("src", src);
@@ -54,6 +54,7 @@ function ImageDialog() {
     }, [editor, isOpened, setValue]);
 
     const onSubmit = handleSubmit(() => {
+        if (editor.isDestroyed) return;
         const { src, alt, title } = getValues();
 
         editor.chain().focus().setImage({ src, alt, title }).run();
