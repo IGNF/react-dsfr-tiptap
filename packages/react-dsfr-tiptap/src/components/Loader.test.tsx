@@ -35,16 +35,19 @@ describe("Loader — no duplicate-extension warning (StarterKit.configure { link
         render(
             <Loader
                 controls={[["Bold", "Link"]]}
+                extensions={[StarterKit.configure({ link: false, underline: false })]}
                 extensionLoader={{
                     link: () => import("@tiptap/extension-link").then((m) => m.default),
                 }}
             />
         );
 
-        await waitFor(() => screen.getAllByRole("button").length >= 2);
+        await waitFor(() => expect(screen.getAllByRole("button").length).toBeGreaterThanOrEqual(1));
 
         // Should be no warning about duplicate extension names
-        const duplicateWarnings = warnSpy.mock.calls.filter((args) => typeof args[0] === "string" && (args[0] as string).includes("duplicate"));
+        const duplicateWarnings = warnSpy.mock.calls.filter(
+            (args) => typeof args[0] === "string" && (args[0] as string).includes("Duplicate extension names found")
+        );
         expect(duplicateWarnings).toHaveLength(0);
 
         warnSpy.mockRestore();
@@ -56,15 +59,18 @@ describe("Loader — no duplicate-extension warning (StarterKit.configure { link
         render(
             <Loader
                 controls={[["Bold", "Underline"]]}
+                extensions={[StarterKit.configure({ link: false, underline: false })]}
                 extensionLoader={{
                     underline: () => import("@tiptap/extension-underline").then((m) => m.default),
                 }}
             />
         );
 
-        await waitFor(() => screen.getAllByRole("button").length >= 2);
+        await waitFor(() => expect(screen.getAllByRole("button").length).toBeGreaterThanOrEqual(1));
 
-        const duplicateWarnings = warnSpy.mock.calls.filter((args) => typeof args[0] === "string" && (args[0] as string).includes("duplicate"));
+        const duplicateWarnings = warnSpy.mock.calls.filter(
+            (args) => typeof args[0] === "string" && (args[0] as string).includes("Duplicate extension names found")
+        );
         expect(duplicateWarnings).toHaveLength(0);
 
         warnSpy.mockRestore();
@@ -148,9 +154,11 @@ describe("MarkdownEditor — Link/Unlink warning without extensionLoader", () =>
             />
         );
 
-        await waitFor(() => screen.getAllByRole("button").length >= 2);
+        await waitFor(() => expect(screen.getAllByRole("button").length).toBeGreaterThanOrEqual(1));
 
-        const duplicateWarnings = warnSpy.mock.calls.filter((args) => typeof args[0] === "string" && (args[0] as string).includes("duplicate"));
+        const duplicateWarnings = warnSpy.mock.calls.filter(
+            (args) => typeof args[0] === "string" && (args[0] as string).includes("Duplicate extension names found")
+        );
         expect(duplicateWarnings).toHaveLength(0);
 
         warnSpy.mockRestore();

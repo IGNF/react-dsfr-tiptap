@@ -17,7 +17,7 @@ describe("MarkdownEditor component", () => {
         expect(title instanceof HTMLHeadingElement).toBe(true);
     });
 
-    test("loads underline without duplicate extension warning", async () => {
+    test("loads link without duplicate extension warning", async () => {
         const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => undefined);
 
         render(
@@ -30,7 +30,8 @@ describe("MarkdownEditor component", () => {
             />
         );
 
-        await waitFor(() => expect(screen.queryAllByRole("button").length).toEqual(0));
+        // Wait for the editor to mount (Loader returns null while extensions load)
+        await waitFor(() => expect(screen.getByText("Hello")).toBeInTheDocument());
         expect(
             warnSpy.mock.calls.some(
                 ([message]) => typeof message === "string" && message.includes("Duplicate extension names found") && message.includes("link")
