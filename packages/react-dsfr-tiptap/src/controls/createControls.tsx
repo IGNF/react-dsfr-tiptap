@@ -26,9 +26,9 @@ export function createCustomControl(configuration: ICreateCustomControlProps) {
         const editorState = useEditorState({
             editor,
             selector: ({ editor }: { editor: Editor }) => {
-                // Guard against destroyed / not-yet-mounted editors so the selector
+                // Guard against destroyed editors so the selector
                 // does not crash in React 18 StrictMode or on rapid mount/unmount.
-                if (!editor || editor.isDestroyed) {
+                if (editor.isDestroyed) {
                     return { disabled: true, isActive: false };
                 }
                 return {

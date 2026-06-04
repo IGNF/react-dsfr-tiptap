@@ -64,7 +64,7 @@
         "prepublishOnly": "npm run build",
         "check-types": "tsc -b --noEmit",
         "check-exports:js": "attw --pack . --profile node16 --entrypoints . ./dialog ./markdown ./package.json --quiet",
-        "check-exports:css": "TARBALL=$(npm pack --silent) && tar -tf \"$TARBALL\" | grep -q \"package/dist/index.css\" && rm -f \"$TARBALL\"",
+        "check-exports:css": "TARBALL=$(npm pack --silent) && tar -tf \"$TARBALL\" | grep -q \"package/dist/index.css\"; STATUS=$?; rm -f \"$TARBALL\"; exit $STATUS",
         "check-exports": "npm run check-exports:js && npm run check-exports:css",
         "changelog": "changelog"
     },
