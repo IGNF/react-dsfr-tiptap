@@ -2,6 +2,17 @@
 
 ##### Chores
 
+- update npm bundle size badge in README ([e17a7bbf](https://github.com/IGNF/react-dsfr-tiptap/commit/e17a7bbfa984cd6de37ca46f45c06fdbaa7b1492))
+- add README badges ([90e3b8f2](https://github.com/IGNF/react-dsfr-tiptap/commit/90e3b8f201edfa084175bfdb6eac063ba09ab966))
+
+##### Bug Fixes
+
+- **deps:** déclarer @tiptap/core, pm, react et starter-kit en peerDependencies ([27be3c75](https://github.com/IGNF/react-dsfr-tiptap/commit/27be3c7546fb34a2be3e983915b305c94f8f5300))
+
+### 2.2.0 (2026-06-04)
+
+##### Chores
+
 - add AGENTS.md and others ([7166120a](https://github.com/IGNF/react-dsfr-tiptap/commit/7166120ad2d350187f980e3e83b72bee2a30aabd))
 
 ##### Documentation Changes
