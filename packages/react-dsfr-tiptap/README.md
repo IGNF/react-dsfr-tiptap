@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/IGNF/react-dsfr-tiptap/actions/workflows/test.yml/badge.svg)](https://github.com/IGNF/react-dsfr-tiptap/actions/workflows/test.yml)
 [![Npm](https://img.shields.io/npm/v/react-dsfr-tiptap?logo=npm)](https://www.npmjs.com/package/react-dsfr-tiptap)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-dsfr-tiptap)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-dsfr-tiptap?cacheSeconds=86400)
 [![License: MIT](https://img.shields.io/npm/l/react-dsfr-tiptap)](https://github.com/IGNF/react-dsfr-tiptap/blob/main/LICENSE)
 
 Composant de texte riche React pour le [System de design du gouvernement français (alias DSFR) 🇫🇷](https://www.systeme-de-design.gouv.fr/).
