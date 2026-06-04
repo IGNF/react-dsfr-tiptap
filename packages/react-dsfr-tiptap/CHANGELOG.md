@@ -1,3 +1,18 @@
+### 2.1.0 (2026-06-04)
+
+##### New Features
+
+- upgrade to React 19/Vite 8 and harden Tiptap editor lifecycle handling ([6953392b](https://github.com/IGNF/react-dsfr-tiptap/commit/6953392bc538c9c51809196e025fe5fd7c4061bc))
+
+##### Bug Fixes
+
+- **build:** always clean check-exports CSS tarball and simplify destroyed-editor guard ([4017644d](https://github.com/IGNF/react-dsfr-tiptap/commit/4017644d4eecd4a8024c4bc9dab4addc311ca914))
+- **examples:** add tsconfig path aliases for workspace type-check resolution ([20eb16c7](https://github.com/IGNF/react-dsfr-tiptap/commit/20eb16c729f9ae26a64677dec8830554a6a28c15))
+
+##### Tests
+
+- **components:** harden Loader/MarkdownEditor duplicate-warning tests and async mount assertions ([d255fcba](https://github.com/IGNF/react-dsfr-tiptap/commit/d255fcbaf8f51b8a5b33e816dcef38f99089b42d))
+
 ## 2.0.0 (2025-10-20)
 
 ##### Chores
