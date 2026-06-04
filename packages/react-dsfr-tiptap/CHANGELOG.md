@@ -1,17 +1,25 @@
-### 2.1.0 (2026-06-04)
+### 2.2.0 (2026-06-04)
+
+##### Chores
+
+- add AGENTS.md and others ([7166120a](https://github.com/IGNF/react-dsfr-tiptap/commit/7166120ad2d350187f980e3e83b72bee2a30aabd))
+
+##### Documentation Changes
+
+- update CHANGELOG.md ([290c435b](https://github.com/IGNF/react-dsfr-tiptap/commit/290c435baf73db57955873a63d0c0a19b5b8add6))
 
 ##### New Features
 
-- upgrade to React 19/Vite 8 and harden Tiptap editor lifecycle handling ([6953392b](https://github.com/IGNF/react-dsfr-tiptap/commit/6953392bc538c9c51809196e025fe5fd7c4061bc))
+- upgrade to React 19/Vite 8 and harden Tiptap editor lifecycle handling ([21d824b5](https://github.com/IGNF/react-dsfr-tiptap/commit/21d824b56f1878796991ad275c6dc75410f02864))
 
 ##### Bug Fixes
 
-- **build:** always clean check-exports CSS tarball and simplify destroyed-editor guard ([4017644d](https://github.com/IGNF/react-dsfr-tiptap/commit/4017644d4eecd4a8024c4bc9dab4addc311ca914))
-- **examples:** add tsconfig path aliases for workspace type-check resolution ([20eb16c7](https://github.com/IGNF/react-dsfr-tiptap/commit/20eb16c729f9ae26a64677dec8830554a6a28c15))
+- **build:** always clean check-exports CSS tarball and simplify destroyed-editor guard ([c15a3946](https://github.com/IGNF/react-dsfr-tiptap/commit/c15a39460da3e8cab28ec129b277974335509fb1))
+- **examples:** add tsconfig path aliases for workspace type-check resolution ([be21d49b](https://github.com/IGNF/react-dsfr-tiptap/commit/be21d49bee74d4e0b8cc678408bf686973746219))
 
 ##### Tests
 
-- **components:** harden Loader/MarkdownEditor duplicate-warning tests and async mount assertions ([d255fcba](https://github.com/IGNF/react-dsfr-tiptap/commit/d255fcbaf8f51b8a5b33e816dcef38f99089b42d))
+- **components:** harden Loader/MarkdownEditor duplicate-warning tests and async mount assertions ([7f2055f2](https://github.com/IGNF/react-dsfr-tiptap/commit/7f2055f21b98172c139ec822b9f5a7bee35566f4))
 
 ## 2.0.0 (2025-10-20)
 
