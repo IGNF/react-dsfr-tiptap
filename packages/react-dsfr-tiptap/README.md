@@ -33,6 +33,7 @@ La librairie publiée (`packages/react-dsfr-tiptap`) fonctionne sur Node >=20. L
 Note de compatibilité
 
 - Cette librairie cible Tiptap v3 (React 18 & 19). Assurez-vous d'installer les extensions en version 3.x.
+- **Sécurité** : nous recommandons `@tiptap/*` >= 3.30.5, `prosemirror-view` >= 1.42.3 et `validator` >= 13.15.21. Les versions antérieures ont des failles connues (XSS au collage, contournement de `isURL` utilisé par la modale de lien). Mettez-les à jour avec `npm update`.
 - **Depuis v2.0.0 (changement majeur)** : les extensions `Link` et `Underline` sont désactivées dans le `StarterKit` par défaut, afin d'éviter les doublons d'extensions. Si vous utilisez les contrôles `Link`, `Unlink` (éditeur Markdown ou RTE) ou `Underline` (RTE), vous devez fournir une entrée `extensionLoader` correspondante — sinon un avertissement console indique la correction à apporter. Exemple :
     ```ts
     extensionLoader={{
