@@ -65,6 +65,8 @@ CI (`.github/workflows/test.yml`, on every push, Node 22 / 24 / 26) runs, in ord
 - `react-dsfr-tiptap/dialog` → `src/dialog.ts`: dialog controls (Link/Unlink/Image/Youtube), `Dialog` primitives, dialog context
 - `react-dsfr-tiptap/index.css`: the `.fr-tiptap` stylesheet for rendering generated HTML
 
+TypeScript 7 with `isolatedDeclarations`: tsdown generates the `.d.ts` files with oxc, file by file. Every exported function, constant and component needs an explicit type (return type, or annotation like `export const ControlBold: () => ReactNode = createControl(...)`); `tsc` reports any that is missing.
+
 When adding a new exported symbol, wire it through the correct entry file **and** the `exports`/`files` maps in `packages/react-dsfr-tiptap/package.json`, then run `check-exports` (`attw`).
 
 ## Architecture

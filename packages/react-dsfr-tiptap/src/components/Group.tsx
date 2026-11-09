@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode, type JSX } from "react";
 import { tss } from "tss-react";
 
 interface IGroupProps {
     children: ReactNode;
 }
 
-function Group(props: IGroupProps) {
+function Group(props: IGroupProps): JSX.Element {
     const { children } = props;
     const { classes } = useStyles();
 

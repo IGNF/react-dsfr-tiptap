@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/react";
 
-export function getSelectedText(editor: Editor) {
+export function getSelectedText(editor: Editor): string {
     const { from, to, empty } = editor.state.selection;
 
     if (empty) {

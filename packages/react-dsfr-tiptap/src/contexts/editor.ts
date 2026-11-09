@@ -1,7 +1,7 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, type Context } from "react";
 import { Editor } from "@tiptap/react";
 
-export const editorContext = createContext<Editor | null>(null);
+export const editorContext: Context<Editor | null> = createContext<Editor | null>(null);
 
 export function useEditor(): Editor {
     const editor = useContext(editorContext);

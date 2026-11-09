@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
+import { forwardRef, ReactNode, useCallback, useId, useImperativeHandle, useMemo, useRef, type ForwardRefExoticComponent, type RefAttributes } from "react";
 import { createModal } from "@codegouvfr/react-dsfr/Modal/index.js";
 import { useIsModalOpen } from "@codegouvfr/react-dsfr/Modal/useIsModalOpen.js";
 import { createPortal } from "react-dom";
@@ -15,7 +15,7 @@ export interface IDialogProps {
     container?: Element | DocumentFragment;
 }
 
-const Dialog = forwardRef<IDialogHandle, IDialogProps>((props, ref) => {
+const Dialog: ForwardRefExoticComponent<IDialogProps & RefAttributes<IDialogHandle>> = forwardRef<IDialogHandle, IDialogProps>((props, ref) => {
     const { children, container = document.body } = props;
 
     const id = useId();

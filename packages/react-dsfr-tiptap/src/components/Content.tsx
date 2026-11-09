@@ -1,4 +1,4 @@
-import { ForwardedRef } from "react";
+import { ForwardedRef, type JSX } from "react";
 import { fr } from "@codegouvfr/react-dsfr";
 import { EditorContent, EditorContentProps } from "@tiptap/react";
 import { tss } from "tss-react";
@@ -12,7 +12,7 @@ export interface IContentProps extends Omit<EditorContentProps, "editor" | "inne
     ref?: ForwardedRef<HTMLDivElement | null>;
 }
 
-function Content(props: IContentProps) {
+function Content(props: IContentProps): JSX.Element {
     const editor = useEditor();
     const { classes, cx } = useStyles();
 

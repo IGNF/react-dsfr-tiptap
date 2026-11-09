@@ -1,5 +1,5 @@
 import { ModalProps } from "@codegouvfr/react-dsfr/Modal/index.js";
-import { ReactElement, createContext, useContext } from "react";
+import { ReactElement, createContext, useContext, type Context } from "react";
 
 interface Modal {
     buttonProps: {
@@ -21,7 +21,7 @@ export interface IDialogContext {
     onClose: () => void;
 }
 
-export const dialogContext = createContext<IDialogContext>({ isOpened: false, onClose: () => null });
+export const dialogContext: Context<IDialogContext> = createContext<IDialogContext>({ isOpened: false, onClose: () => null });
 
 export function useDialog(): Required<IDialogContext> {
     const { isOpened, onClose, modal } = useContext(dialogContext);

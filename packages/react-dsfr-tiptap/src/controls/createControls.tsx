@@ -56,7 +56,7 @@ interface ICreateDialogControlProps extends Omit<ICreateCustomControlProps, "Con
     onClick: (editor: Editor, ref: RefObject<IDialogHandle | null>) => void;
 }
 
-export function createDialogControl(configuration: ICreateDialogControlProps) {
+export function createDialogControl(configuration: ICreateDialogControlProps): () => ReactNode {
     const { buttonProps, onClick, ...rest } = configuration;
     return createCustomControl({
         Control: (editor, editorState, ref) => {
@@ -78,7 +78,7 @@ interface ICreateControlProps extends Omit<ICreateDialogControlProps, "DialogCon
     operation: { name: string; attributes?: Record<string, unknown> | string };
 }
 
-export function createControl(configuration: ICreateControlProps) {
+export function createControl(configuration: ICreateControlProps): () => ReactNode {
     const { isDisabled, operation, ...rest } = configuration;
     return createDialogControl({
         ...rest,

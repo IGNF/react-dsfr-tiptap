@@ -1,5 +1,5 @@
 import { fr } from "@codegouvfr/react-dsfr";
-import { ReactNode } from "react";
+import { ReactNode, type JSX } from "react";
 import { tss } from "tss-react";
 
 interface IMenuProps {
@@ -8,7 +8,7 @@ interface IMenuProps {
     last?: boolean;
 }
 
-function Menu(props: IMenuProps) {
+function Menu(props: IMenuProps): JSX.Element {
     const { children, first, last } = props;
     const { classes, cx } = useStyles();
 

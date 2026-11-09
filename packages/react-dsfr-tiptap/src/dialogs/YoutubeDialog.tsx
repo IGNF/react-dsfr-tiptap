@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type JSX } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@codegouvfr/react-dsfr/Input.js";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,7 +14,7 @@ interface IYoutubeForm {
     height?: number;
 }
 
-function YoutubeDialog() {
+function YoutubeDialog(): JSX.Element {
     const { isOpened, modal, onClose } = useDialog();
     const editor = useEditor();
 

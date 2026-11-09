@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState, type JSX } from "react";
 import { AnyExtension } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 
@@ -70,7 +70,7 @@ const extensionDefaultConfiguration = {
     },
 };
 
-function Loader(props: ILoaderProps) {
+function Loader(props: ILoaderProps): JSX.Element | null {
     const { contentProps = {}, controlMap = {}, controls, extensionLoader = {}, menu = "top", ...rest } = props;
     const [extensions, setExtensions] = useState<Partial<Record<Extension, AnyExtension>>>(() =>
         Object.fromEntries(props.extensions?.map((extension) => [extension.name, extension]) ?? [["starterKit", StarterKit]])
