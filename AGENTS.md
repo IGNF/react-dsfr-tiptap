@@ -106,7 +106,7 @@ Composition is layered: `RichTextEditor` / `MarkdownEditor` → `Loader` → `Pr
 
 ## Testing
 
-Jest + ts-jest + jsdom + Testing Library. `jest.config.js` sets `transformIgnorePatterns` to transform the ESM deps `@codegouvfr`, `@tiptap/markdown`, `marked`: extend this list if a new ESM dependency fails to parse. CSS imports are mocked via `__mocks__/styleMock.ts`. Use `src/test-utils.ts` (`suppressConsoleError`, `renderHookWithError`) when testing hooks that throw (e.g. context guards).
+Jest + `@swc/jest` + jsdom + Testing Library. SWC strips types without checking them: `npm run check-types` covers the tests. `jest.config.js` sets `transformIgnorePatterns` to transform the ESM deps `@codegouvfr`, `@tiptap/markdown`, `marked`: extend this list if a new ESM dependency fails to parse. CSS imports are mocked via `__mocks__/styleMock.ts`. Use `src/test-utils.ts` (`suppressConsoleError`, `renderHookWithError`) when testing hooks that throw (e.g. context guards).
 
 ## Writing style
 
