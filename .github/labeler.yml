@@ -1,18 +1,24 @@
-enable:
-  issues: true
-  prs: true
-  
-tooling:
-  - .github/**/*
-  - .gitignore
-  - .vscode/**/*
+# Labels each PR from its branch name and changed files. The labels set the sections of the GitHub release notes (.github/release.yml).
+enhancement:
+    - head-branch: ["^feat/"]
 
+bug:
+    - head-branch: ["^fix/"]
 
 documentation:
-  - docs/*
+    - any:
+          - head-branch: ["^docs/"]
+          - changed-files:
+                - any-glob-to-any-file: ["docs/**", "**/*.md"]
 
-enhancement:
-  - src/**/*
+tooling:
+    - any:
+          - head-branch: ["^(chore|ci|build)/"]
+          - changed-files:
+                - any-glob-to-any-file: [".github/**", ".husky/**"]
 
 quality:
-  - tests/**/*
+    - any:
+          - head-branch: ["^(test|refactor|perf)/"]
+          - changed-files:
+                - any-glob-to-any-file: ["**/*.test.ts", "**/*.test.tsx"]
