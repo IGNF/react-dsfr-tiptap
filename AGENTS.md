@@ -53,7 +53,7 @@ Run from the repo root (workspace-aware):
 
 GitHub Actions are pinned to a full commit SHA with the version in a comment (`actions/checkout@<sha> # v7.0.1`). Keep this format when adding or updating an action.
 
-CI (`.github/workflows/test.yml`, on every push, Node 20.19 / 22.12 / 24) runs, in order: lint, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`. `labeler.yml` labels PRs.
+CI (`.github/workflows/test.yml`, on every push, Node 22 / 24 / 26) runs, in order: lint, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`. `labeler.yml` labels PRs.
 
 ## Build & package layout
 
