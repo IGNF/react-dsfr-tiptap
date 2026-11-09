@@ -1,7 +1,7 @@
 name: Label PR
 on:
-    # pull_request_target also labels PRs from forks. Safe here: the job never checks out the PR code.
-    pull_request_target:
+    # pull_request, not pull_request_target: GitHub blocks pull_request_target by default on public repos from 2026-12-02
+    pull_request:
         types: [opened, reopened, synchronize]
 permissions:
     contents: read
@@ -9,6 +9,8 @@ permissions:
 jobs:
     label:
         name: Label
+        # Fork PRs get a read-only token and cannot be labeled: label them by hand
+        if: github.event.pull_request.head.repo.full_name == github.repository
         timeout-minutes: 5
         runs-on: ubuntu-latest
         steps:
