@@ -13,7 +13,7 @@ documentation:
 
 tooling:
     - any:
-          - head-branch: ["^(chore|ci|build)/"]
+          - head-branch: ["^(chore|ci|build|renovate)/"]
           - changed-files:
                 - any-glob-to-any-file: [".github/**", ".husky/**"]
 

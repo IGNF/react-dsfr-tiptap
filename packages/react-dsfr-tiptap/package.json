@@ -74,7 +74,7 @@
         "@hookform/resolvers": "^7.0.5",
         "@jest/globals": "^30.0.0",
         "@testing-library/dom": "^10.4.0",
-        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/jest-dom": "^7.0.1",
         "@testing-library/react": "^16.1.0",
         "@tiptap/core": "^3.25.0",
         "@tiptap/extension-color": "^3.25.0",
@@ -179,6 +179,6 @@
         }
     },
     "engines": {
-        "node": ">=20"
+        "node": ">=22"
     }
 }

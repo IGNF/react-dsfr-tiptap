@@ -21,12 +21,12 @@ Ce dépôt contient :
 
 ## Matrice de compatibilité
 
-|          | Node 20.19+ | Node 22.12+ | Node 24 |
-| -------- | :---------: | :---------: | :-----: |
-| React 18 |     ✅      |     ✅      |   ✅    |
-| React 19 |     ✅      |     ✅      |   ✅    |
+|          | Node 22 | Node 24 | Node 26 |
+| -------- | :-----: | :-----: | :-----: |
+| React 18 |   ✅    |   ✅    |   ✅    |
+| React 19 |   ✅    |   ✅    |   ✅    |
 
-La librairie publiée (`packages/react-dsfr-tiptap`) fonctionne sur Node >=20. Le build des examples (Vite 8) requiert Node >=20.19 ou >=22.12.
+La librairie publiée (`packages/react-dsfr-tiptap`) requiert Node >=22.
 
 ## Installation
 
