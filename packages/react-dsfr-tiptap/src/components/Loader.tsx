@@ -11,17 +11,7 @@ import RichTextEditorProvider, { IProviderProps } from "./Provider";
 import RichTextEditorGroup from "./Group";
 
 export type Extension =
-    | "color"
-    | "highlight"
-    | "image"
-    | "link"
-    | "markdown"
-    | "starterKit"
-    | "subscript"
-    | "superscript"
-    | "textAlign"
-    | "underline"
-    | "youtube";
+    "color" | "highlight" | "image" | "link" | "markdown" | "starterKit" | "subscript" | "superscript" | "textAlign" | "underline" | "youtube";
 
 export interface ILoaderProps extends Omit<IProviderProps, "children"> {
     contentProps?: IContentProps;
