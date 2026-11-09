@@ -6,7 +6,7 @@
     "homepage": "https://github.com/IGNF/react-dsfr-tiptap",
     "repository": {
         "type": "git",
-        "url": "git@github.com:IGNF/react-dsfr-tiptap.git"
+        "url": "https://github.com/IGNF/react-dsfr-tiptap"
     },
     "bugs": {
         "url": "https://github.com/IGNF/react-dsfr-tiptap/issues"
