@@ -1,3 +1,7 @@
+# Changelog
+
+Après la version 2.2.0, les notes de version sont publiées sur [GitHub Releases](https://github.com/IGNF/react-dsfr-tiptap/releases). Ce fichier n’est plus mis à jour.
+
 ### 2.2.0 (2026-06-04)
 
 ##### Chores
@@ -9,7 +13,7 @@
 
 - **deps:** déclarer @tiptap/core, pm, react et starter-kit en peerDependencies ([27be3c75](https://github.com/IGNF/react-dsfr-tiptap/commit/27be3c7546fb34a2be3e983915b305c94f8f5300))
 
-### 2.2.0 (2026-06-04)
+### 2.1.0 (2026-06-04)
 
 ##### Chores
 

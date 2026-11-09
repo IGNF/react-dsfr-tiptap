@@ -4,7 +4,7 @@ Instructions for AI coding agents working on this repository. This is the single
 
 ## Project
 
-`react-dsfr-tiptap` is a React rich-text / markdown editor library implementing the French government Design System (DSFR, `@codegouvfr/react-dsfr`) on top of **Tiptap v3**. It is an npm-workspaces + Lerna monorepo:
+`react-dsfr-tiptap` is a React rich-text / markdown editor library implementing the French government Design System (DSFR, `@codegouvfr/react-dsfr`) on top of **Tiptap v3**. It is an npm-workspaces monorepo:
 
 - `packages/react-dsfr-tiptap/`: the published library
 - `examples/`: a Vite demo app, deployed to GitHub Pages
@@ -23,13 +23,13 @@ Icons are remixicon (`ri-*`) and DSFR (`fr-icon-*`).
 - Commit messages: simple French, Conventional Commits (`feat:`, `fix:`, `chore:`...), one short line, no body unless truly necessary: the PR description carries the details. commitlint enforces the format via the husky `commit-msg` hook.
 - Small atomic commits: one logical concern per commit.
 - AI-assisted commits end with the trailer `Assisted-by: <model name and version> <noreply@anthropic.com>`, naming the model that actually generated the code (e.g. `Assisted-by: Claude Opus 5.5 <noreply@anthropic.com>`), instead of `Co-Authored-By: Claude...`.
-- Never commit on `main`: create a branch first. Branch names are short, in conventional-commit type/scope style, with the issue number when relevant (`feat/empty-paragraph`, `fix/dialog-portals`). Release commits (`npm run release:*`) are the only exception.
+- Never commit on `main`: create a branch first. Branch names are short, in conventional-commit type/scope style, with the issue number when relevant (`feat/empty-paragraph`, `fix/dialog-portals`). The branch prefix sets the PR label, and the label sets the section of the release notes (`.github/labeler.yml`): use `feat/`, `fix/`, `docs/`, `chore/`, `ci/`, `build/`, `test/`, `refactor/` or `perf/`. Add the `breaking` label by hand for a breaking change.
 - Never commit, push, publish to npm, or post PR descriptions/comments without a human explicitly validating the content first.
 - PR titles: conventional-commit style, issue number when relevant. PR descriptions in French: concise, simple wording, no AI-sounding or corporate jargon. Don't repeat what the linked issue already says. Structure: `Closes #N`, a short "Changements" bullet list, "Validation" when relevant, and an explicit call-out for any deliberate behavior change or public API change.
 
 ## Agent workflow
 
-- Do not modify CI workflows, release scripts or `package.json` peer ranges beyond the agreed scope; surface the need and ask first.
+- Do not modify CI workflows or `package.json` peer ranges beyond the agreed scope; surface the need and ask first.
 - Any deviation from an approved design or plan must be validated before coding. Factual corrections are fine; behavior choices (error paths, public API, peer ranges) are not.
 - This is a published library: a change to an exported symbol, a prop, or a peer dependency range is a public API change. Flag it and state whether it is breaking (semver major).
 
@@ -49,9 +49,11 @@ Run from the repo root (workspace-aware):
 
 **Single test:** `cd packages/react-dsfr-tiptap && npx jest src/components/ColorInput.test.tsx` (or filter by name: `npx jest -t "color"`).
 
-**Release** (maintainers): `npm run release:patch|minor|major` regenerates the CHANGELOG via `generate-changelog`, commits, then runs `lerna version --no-private`.
+**Release** (maintainers): see `docs/publish.md`. A version bump PR (`npm version <patch|minor|major> --no-git-tag-version -w packages/react-dsfr-tiptap`), then a GitHub Release `v<version>`: `publish.yml` publishes to npm through trusted publishing (OIDC, no npm token). Release notes live in GitHub Releases; `CHANGELOG.md` is frozen at 2.2.0.
 
-CI (`.github/workflows/test.yml`, on every push, Node 20.19 / 22.12 / 24) runs, in order: lint, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`.
+GitHub Actions are pinned to a full commit SHA with the version in a comment (`actions/checkout@<sha> # v7.0.1`). Keep this format when adding or updating an action.
+
+CI (`.github/workflows/test.yml`, on every push, Node 20.19 / 22.12 / 24) runs, in order: lint, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`. `labeler.yml` labels PRs.
 
 ## Build & package layout
 
