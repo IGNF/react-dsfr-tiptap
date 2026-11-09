@@ -31,6 +31,7 @@ export function CustomControl1() {
 }
 
 // 2. Or use the `createControl` helper
+// oxlint-disable-next-line react/only-export-components -- created by a factory, but still a component
 export const CustomControl2 = createControl({
     buttonProps: { children: "Insérer du contenu" },
     operation: { name: "insertContent", attributes: "[custom]" },
@@ -104,6 +105,7 @@ function CustomDialog() {
     );
 }
 
+// oxlint-disable-next-line react/only-export-components -- created by a factory, but still a component
 export const CustomControl3 = createDialogControl({
     buttonProps: { children: "Insérer du contenu" },
     DialogContent: CustomDialog,

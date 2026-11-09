@@ -98,7 +98,7 @@ Composition is layered: `RichTextEditor` / `MarkdownEditor` → `Loader` → `Pr
 - **Forms:** React Hook Form + `yupResolver`. yup `.test()` callbacks must handle `undefined` values.
 - Never pass a state setter/toggle directly as a DOM event handler (it would receive the event object): write `onClick={() => toggle()}`. Buttons inside forms that don't submit need `type="button"`.
 - Import order: third-party, then project (relative), then CSS.
-- **Lint:** Oxlint with type-aware rules (`.oxlintrc.json`, same setup as cartes.gouv.fr). Disable a rule only with a one-line comment stating why.
+- **Lint:** Oxlint with type-aware rules (`.oxlintrc.json`, same setup as cartes.gouv.fr). Warnings fail `npm run lint` (`--max-warnings 0`). Disable a rule only with a one-line comment stating why (`// oxlint-disable-next-line <rule> -- <reason>`).
 - **Prettier:** tabWidth 4, printWidth 160, trailingComma `es5`. pre-commit runs lint-staged (prettier on all files, oxlint on `*.{js,ts,jsx,tsx}`).
 
 ## Comments
