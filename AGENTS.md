@@ -39,7 +39,7 @@ Run from the repo root (workspace-aware):
 
 | Task                           | Command                                      |
 | ------------------------------ | -------------------------------------------- |
-| Build the library              | `npm run build` (tsup)                       |
+| Build the library              | `npm run build` (tsdown)                     |
 | Run tests                      | `npm run test`                               |
 | Run examples dev server        | `npm run examples` (vite)                    |
 | Build examples (GH Pages base) | `npm run build:examples`                     |
@@ -58,7 +58,7 @@ CI (`.github/workflows/test.yml`, on every push, Node 22 / 24 / 26) runs, in ord
 
 ## Build & package layout
 
-`tsup` produces dual CJS/ESM + `.d.ts` from three entry points, exposed as subpath exports:
+`tsdown` (`packages/react-dsfr-tiptap/tsdown.config.ts`) produces dual CJS/ESM + `.d.ts`/`.d.cts` from three entry points, exposed as subpath exports. Imported CSS is extracted into `dist/index.css`; `deps.onlyBundle` makes the build fail if a dependency other than `prosemirror-view` (its stylesheet) would be bundled.
 
 - `react-dsfr-tiptap` → `src/index.ts`: `RichTextEditor`, all controls, `createControl*` utilities, editor context, constants
 - `react-dsfr-tiptap/markdown` → `src/markdown.ts`: `MarkdownEditor` + markdown constants
