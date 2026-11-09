@@ -108,7 +108,7 @@ function Loader(props: ILoaderProps) {
 
     useEffect(() => {
         if (extensionsToLoad.length > 0) {
-            Promise.all(extensionsToLoad.map((name) => extensionLoader[name]!())).then((loadedExtensions) => {
+            void Promise.all(extensionsToLoad.map((name) => extensionLoader[name]!())).then((loadedExtensions) => {
                 if (loadedExtensions.length > 0) {
                     setExtensions((extensions) => ({
                         ...extensions,

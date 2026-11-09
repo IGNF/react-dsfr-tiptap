@@ -43,7 +43,8 @@ Run from the repo root (workspace-aware):
 | Run tests                      | `npm run test`                               |
 | Run examples dev server        | `npm run examples` (vite)                    |
 | Build examples (GH Pages base) | `npm run build:examples`                     |
-| Lint                           | `npm run lint` / `npm run lint:fix`          |
+| Lint (Oxlint)                  | `npm run lint` / `npm run lint:fix`          |
+| Format (Prettier)              | `npm run format` / `npm run format:fix`      |
 | Type-check (all workspaces)    | `npm run check-types`                        |
 | Validate published exports     | `npm run check-exports -w react-dsfr-tiptap` |
 
@@ -53,7 +54,7 @@ Run from the repo root (workspace-aware):
 
 GitHub Actions are pinned to a full commit SHA with the version in a comment (`actions/checkout@<sha> # v7.0.1`). Keep this format when adding or updating an action.
 
-CI (`.github/workflows/test.yml`, on every push, Node 22 / 24 / 26) runs, in order: lint, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`. `labeler.yml` labels PRs.
+CI (`.github/workflows/test.yml`, on every push, Node 22 / 24 / 26) runs, in order: lint, format, test, check-types, build, check-exports, build:examples. Keep them all green. `deploy.yml` deploys the examples app to GitHub Pages on push to `main`. `labeler.yml` labels PRs.
 
 ## Build & package layout
 
@@ -95,7 +96,8 @@ Composition is layered: `RichTextEditor` / `MarkdownEditor` → `Loader` → `Pr
 - **Forms:** React Hook Form + `yupResolver`. yup `.test()` callbacks must handle `undefined` values.
 - Never pass a state setter/toggle directly as a DOM event handler (it would receive the event object): write `onClick={() => toggle()}`. Buttons inside forms that don't submit need `type="button"`.
 - Import order: third-party, then project (relative), then CSS.
-- **Prettier:** tabWidth 4, printWidth 160, trailingComma `es5`. pre-commit runs lint-staged (prettier on all files, eslint on `*.{js,ts,jsx,tsx}`).
+- **Lint:** Oxlint with type-aware rules (`.oxlintrc.json`, same setup as cartes.gouv.fr). Disable a rule only with a one-line comment stating why.
+- **Prettier:** tabWidth 4, printWidth 160, trailingComma `es5`. pre-commit runs lint-staged (prettier on all files, oxlint on `*.{js,ts,jsx,tsx}`).
 
 ## Comments
 

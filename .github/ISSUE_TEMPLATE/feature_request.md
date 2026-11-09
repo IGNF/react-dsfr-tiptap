@@ -1,19 +1,18 @@
 ---
 name: Feature request
 about: Pour demander une nouvelle fonctionnalité
-title: ''
+title: ""
 labels: enhancement
-assignees: ''
-
+assignees: ""
 ---
 
 ## Intitulé
 
-* En tant que **utilisateur_xxx**
-* Je veux **action_xxx**
-* Afin de **objectif_xxx**
+- En tant que **utilisateur_xxx**
+- Je veux **action_xxx**
+- Afin de **objectif_xxx**
 
- ## Spécifications
+## Spécifications
 
     **Spécifiez ce que permet de faire cette fonctionnalité.**
 

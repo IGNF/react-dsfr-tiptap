@@ -93,7 +93,7 @@ function CustomDialog() {
                         ...register("text"),
                     }}
                 >
-                    <option value=""></option>
+                    <option value="">Sélectionner une option</option>
                     <option value="[custom1]">[custom1]</option>
                     <option value="[custom2]">[custom2]</option>
                     <option value="[custom3]">[custom3]</option>
