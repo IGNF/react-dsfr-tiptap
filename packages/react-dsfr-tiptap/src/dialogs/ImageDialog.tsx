@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type JSX } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@codegouvfr/react-dsfr/Input.js";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,7 +14,7 @@ interface IImageForm {
     title?: string;
 }
 
-function ImageDialog() {
+function ImageDialog(): JSX.Element {
     const { isOpened, modal, onClose } = useDialog();
     const editor = useEditor();
 

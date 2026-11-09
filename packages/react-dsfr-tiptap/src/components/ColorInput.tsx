@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { fr } from "@codegouvfr/react-dsfr";
 import { Editor, useEditorState } from "@tiptap/react";
 import { tss } from "tss-react";
@@ -6,7 +7,7 @@ interface IColorInputProps {
     editor: Editor;
 }
 
-function ColorInput(props: IColorInputProps) {
+function ColorInput(props: IColorInputProps): JSX.Element {
     const { editor } = props;
     const { classes, cx } = useStyles();
     const editorState = useEditorState({

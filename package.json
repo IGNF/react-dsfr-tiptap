@@ -27,7 +27,7 @@
         "oxlint": "^1.93.0",
         "oxlint-tsgolint": "^7.0.2006",
         "prettier": "^3.4.2",
-        "typescript": "~5.9.0"
+        "typescript": "^7.0.2"
     },
     "commitlint": {
         "extends": [

@@ -1,6 +1,6 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { useEditor, UseEditorOptions } from "@tiptap/react";
-import { ReactNode, useEffect, useMemo } from "react";
+import { ReactNode, useEffect, useMemo, type JSX } from "react";
 import { tss } from "tss-react";
 
 import { editorContext } from "../contexts/editor";
@@ -9,7 +9,7 @@ export interface IProviderProps extends UseEditorOptions {
     children?: ReactNode;
 }
 
-function Provider(props: IProviderProps) {
+function Provider(props: IProviderProps): JSX.Element {
     const { children, contentType, content, ...rest } = props;
     const editor = useEditor(rest);
     const { classes } = useStyles();

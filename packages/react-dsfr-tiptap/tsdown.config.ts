@@ -1,6 +1,6 @@
-import { defineConfig } from "tsdown";
+import type { UserConfig } from "tsdown";
 
-export default defineConfig({
+const config: UserConfig = {
     entry: ["src/index.ts", "src/dialog.ts", "src/markdown.ts"],
     format: ["cjs", "esm"],
     // Browser library: tsdown would otherwise infer a Node target from "engines"
@@ -18,4 +18,6 @@ export default defineConfig({
     deps: {
         onlyBundle: ["prosemirror-view"],
     },
-});
+};
+
+export default config;
