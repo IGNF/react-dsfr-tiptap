@@ -16,7 +16,7 @@ describe("ColorInput component", () => {
             setColor: jest.fn(() => editor),
         };
         render(<ColorInput editor={editor as unknown as Editor} />);
-        const el = await screen.getByTestId("ColorInput");
+        const el = screen.getByTestId("ColorInput");
         fireEvent.input(el, { target: { value: "#333333" } });
         expect(editor.setColor).toHaveBeenCalledWith("#333333");
     });

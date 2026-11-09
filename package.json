@@ -13,26 +13,21 @@
         "test": "npm run test -w packages/react-dsfr-tiptap",
         "examples": "npm run dev -w examples",
         "prepare": "husky",
-        "lint": "eslint .",
-        "lint:fix": "eslint --fix .",
+        "lint": "oxlint --report-unused-disable-directives",
+        "lint:fix": "oxlint --fix",
+        "format": "prettier --check .",
+        "format:fix": "prettier --write .",
         "check-types": "npm run check-types --ws"
     },
     "devDependencies": {
         "@commitlint/cli": "^21.2.4",
         "@commitlint/config-conventional": "^21.2.4",
-        "@eslint/compat": "^1.2.4",
-        "@eslint/js": "^9.17.0",
-        "eslint": "^9.17.0",
-        "eslint-config-prettier": "^10.0.0",
-        "eslint-plugin-prettier": "^5.2.1",
-        "eslint-plugin-react-hooks": "^5.0.0",
-        "eslint-plugin-react-refresh": "^0.4.16",
-        "globals": "^17.14.0",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
+        "oxlint": "^1.93.0",
+        "oxlint-tsgolint": "^7.0.2006",
         "prettier": "^3.4.2",
-        "typescript": "~5.9.0",
-        "typescript-eslint": "^8.18.1"
+        "typescript": "~5.9.0"
     },
     "commitlint": {
         "extends": [
@@ -41,6 +36,6 @@
     },
     "lint-staged": {
         "*": "prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
-        "*.{js,ts,jsx,tsx}": "eslint"
+        "*.{js,ts,jsx,tsx}": "oxlint"
     }
 }

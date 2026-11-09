@@ -1,0 +1,50 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "react", "jsx-a11y", "unicorn"],
+    "categories": {
+        "correctness": "error",
+        "perf": "error"
+    },
+    "options": {
+        "typeAware": true
+    },
+    "env": {
+        "builtin": true,
+        "browser": true
+    },
+    "rules": {
+        // Rules outside the correctness category, carried over from the former ESLint config (js + typescript-eslint recommended)
+        "no-case-declarations": "error",
+        "no-empty": "error",
+        "no-prototype-builtins": "error",
+        "no-regex-spaces": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "typescript/ban-ts-comment": "error",
+        "typescript/no-empty-object-type": "error",
+        "typescript/no-explicit-any": "error",
+        "typescript/no-namespace": "error",
+        "typescript/no-require-imports": "error",
+        "typescript/no-unnecessary-type-constraint": "error",
+        "typescript/no-unsafe-function-type": "error",
+
+        // Former eslint-plugin-react-hooks and eslint-plugin-react-refresh rules
+        "react/rules-of-hooks": "error",
+        "react/exhaustive-deps": "warn",
+        "react/only-export-components": ["warn", { "allowConstantExport": true }],
+
+        // Menu groups and controls are positional: their index is their identity
+        "react/no-array-index-key": "off"
+    },
+    "overrides": [
+        {
+            // Re-render cost of inline context values does not matter in tests
+            "files": ["**/*.test.ts", "**/*.test.tsx"],
+            "rules": {
+                "react/jsx-no-constructed-context-values": "off"
+            }
+        }
+    ]
+}
